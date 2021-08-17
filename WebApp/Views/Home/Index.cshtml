@@ -1,0 +1,401 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container-fluid" id="slider">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img id="img-slider" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+            </div>
+            <div class="item">
+                <img id="img-slider" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+            </div>
+            <div class="item">
+                <img id="img-slider" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+            </div>
+            <div class="item">
+                <img id="img-slider" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+            </div>
+            <div class="item">
+                <img id="img-slider" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content-text">
+        <div class="content-text-center">
+            <img class="img-circle" src="~/img/logo.jpg" alt="Alternate Text" />
+            <div class="content-text-item">
+                <h3>Kiến trúc, nội thất & xây dựng</h3>
+                <p class="text-justify">
+                    Hơn 5 năm kinh nghiệm trong ngành kiến trúc, nội thất và xây dựng, với hàng trăm khách hàng
+                    mỗi năm, Kiến Tường luôn mang đến những sản phẩm có chất lượng cao, tiến độ giao hàng đảm bảo,
+                    giá thành hợp lý, chế độ bảo hành tốt nhất và đáp ứng những nhu cầu khác nhau của khách hàng.
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" id="product">
+    <div class="row" id="row">
+        <div class="col-sm-4 col-md-3" id="product-item">
+            <div class="frame">
+                <a href="#">
+                    <img class="product-img" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+                    <div>
+                        <span>CHỊ LAN ANH TỈNH KHÁNH HÒA</span>
+                        <p>CĂN HỘ, PENTHOUSE</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-3" id="product-item">
+            <div class="frame">
+                <a href="#">
+                    <img class="product-img" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+                    <div>
+                        <span>CHỊ LAN ANH TỈNH KHÁNH HÒA</span>
+                        <p>CĂN HỘ, PENTHOUSE</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-3" id="product-item">
+            <div class="frame">
+                <a href="#">
+                    <img class="product-img" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+                    <div>
+                        <span>CHỊ LAN ANH TỈNH KHÁNH HÒA</span>
+                        <p>CĂN HỘ, PENTHOUSE</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-3" id="product-item">
+            <div class="frame">
+                <a href="#">
+                    <img class="product-img" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+                    <div>
+                        <span>CHỊ LAN ANH TỈNH KHÁNH HÒA</span>
+                        <p>CĂN HỘ, PENTHOUSE</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="see">
+    <a class="btn" id="btn-see" href="#">Xem tất cả</a>
+</div>
+<div class=" nav-body">
+    <ul class="nav nav-tabs" id="btn-gr">
+        <li class="active" id="btn-gr-item">
+            <a data-toggle="tab" class="btn active" id="btn-link" href="#tabb">Giá thiết kế</a>
+        </li>
+        <li id="btn-gr-item">
+            <a data-toggle="tab" class="btn" id="btn-link" href="#tabb2">Giá xây dựng</a>
+        </li>
+        <li id="btn-gr-item">
+            <a class="btn" id="btn-link">Hợp đồng</a>
+        </li>
+    </ul>
+</div>
+<div class="container-fluid" id="design-price">
+    <div class="tab-content">
+        <div class="row  tab-pane fade in active" id="tabb">
+            <div class="col-sm-3 col-md-3 col-xs-6" id="col-price">
+                <div class="detail-content">
+                    <div>
+                        <h3 class="detail-h3">Trọn gói đ/m²</h3>
+                    </div>
+                    <hr class="detail-hr" />
+                    <div class="detail">
+                        <span id="detail-price"><strong>299,000</strong></span>
+                        <p>Công trình dân dụng</p>
+                        <p>Khách sạn, resort</p>
+                        <p>Bar, cafe, nhà hàng</p>
+                        <span><strong>399,000</strong></span>
+                        <p>Phong cách tân cổ điển</p>
+                        <span><strong>499,000</strong></span>
+                        <p>Phong cách cổ điển</p>
+                        <span><strong>199,000</strong></span>
+                        <p>Sân vườn, Cảnh quan</p>
+                        <p>Tư vấn thiết kế nhanh</p>
+                    </div>
+                    <div class="detail-foot">
+                        <p>Bảng vẽ KT, Nội thất</p>
+                        <p>Kết cấu, M&E</p>
+                        <p>Hồ sơ xin phép XD</p>
+                        <p>Giám sát tác giả</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-xs-6" id="col-price">
+                <div class="detail-content">
+                    <div>
+                        <h3 class="detail-h3">Trọn gói đ/m²</h3>
+                    </div>
+                    <hr class="detail-hr" />
+                    <div class="detail">
+                        <span id="detail-price"><strong>299,000</strong></span>
+                        <p>Công trình dân dụng</p>
+                        <p>Khách sạn, resort</p>
+                        <p>Bar, cafe, nhà hàng</p>
+                        <span><strong>399,000</strong></span>
+                        <p>Phong cách tân cổ điển</p>
+                        <span><strong>499,000</strong></span>
+                        <p>Phong cách cổ điển</p>
+                        <span><strong>199,000</strong></span>
+                        <p>Sân vườn, Cảnh quan</p>
+                        <p>Tư vấn thiết kế nhanh</p>
+                    </div>
+                    <div class="detail-foot">
+                        <p>Bảng vẽ KT, Nội thất</p>
+                        <p>Kết cấu, M&E</p>
+                        <p>Hồ sơ xin phép XD</p>
+                        <p>Giám sát tác giả</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-xs-6" id="col-price">
+                <div class="detail-content">
+                    <div>
+                        <h3 class="detail-h3">Trọn gói đ/m²</h3>
+                    </div>
+                    <hr class="detail-hr" />
+                    <div class="detail">
+                        <span id="detail-price"><strong>299,000</strong></span>
+                        <p>Công trình dân dụng</p>
+                        <p>Khách sạn, resort</p>
+                        <p>Bar, cafe, nhà hàng</p>
+                        <span><strong>399,000</strong></span>
+                        <p>Phong cách tân cổ điển</p>
+                        <span><strong>499,000</strong></span>
+                        <p>Phong cách cổ điển</p>
+                        <span><strong>199,000</strong></span>
+                        <p>Sân vườn, Cảnh quan</p>
+                        <p>Tư vấn thiết kế nhanh</p>
+                    </div>
+                    <div class="detail-foot">
+                        <p>Bảng vẽ KT, Nội thất</p>
+                        <p>Kết cấu, M&E</p>
+                        <p>Hồ sơ xin phép XD</p>
+                        <p>Giám sát tác giả</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-xs-6" id="col-price">
+                <div class="detail-content">
+                    <div>
+                        <h3 class="detail-h3">Trọn gói đ/m²</h3>
+                    </div>
+                    <hr class="detail-hr" />
+                    <div class="detail">
+                        <span id="detail-price"><strong>299,000</strong></span>
+                        <p>Công trình dân dụng</p>
+                        <p>Khách sạn, resort</p>
+                        <p>Bar, cafe, nhà hàng</p>
+                        <span><strong>399,000</strong></span>
+                        <p>Phong cách tân cổ điển</p>
+                        <span><strong>499,000</strong></span>
+                        <p>Phong cách cổ điển</p>
+                        <span><strong>199,000</strong></span>
+                        <p>Sân vườn, Cảnh quan</p>
+                        <p>Tư vấn thiết kế nhanh</p>
+                    </div>
+                    <div class="detail-foot">
+                        <p>Bảng vẽ KT, Nội thất</p>
+                        <p>Kết cấu, M&E</p>
+                        <p>Hồ sơ xin phép XD</p>
+                        <p>Giám sát tác giả</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row  tab-pane fade" id="tabb2">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>Hạng mục</th>
+                        <th>Hệ số</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Sàn</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Sàn có mái che (Gồm ban công)</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Sàn không có mái che</td>
+                        <td>0.5</td>
+                    </tr>
+                    <tr>
+                        <td>Sân thượng</td>
+                        <td>0.5</td>
+                    </tr>
+                    <tr>
+                        <td><b>Mái</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Mái bằng</td>
+                        <td>0.5</td>
+                    </tr>
+                    <tr>
+                        <td>Mái xiên</td>
+                        <td>0.7</td>
+                    </tr>
+                    <tr>
+                        <td><b>Hầm</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Hầm sâu từ 1.0 m đến 1.3 m</td>
+                        <td>1.5</td>
+                    </tr>
+                    <tr>
+                        <td>Hầm sâu từ 1.3 m đến 1.7 m</td>
+                        <td>1.7</td>
+                    </tr>
+                    <tr>
+                        <td>Hầm sâu từ 1.7 m đến 2.0 m</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Hầm sâu lớn hơn 2 mét</td>
+                        <td>2.5</td>
+                    </tr>
+                    <tr>
+                        <td><b>Móng</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Móng cọc – chưa bao gồm cọc</td>
+                        <td>0.35</td>
+                    </tr>
+                    <tr>
+                        <td>Móng đơn</td>
+                        <td>0.35</td>
+                    </tr>
+                    <tr>
+                        <td>Móng băng</td>
+                        <td>0.5</td>
+                    </tr>
+                    <tr>
+                        <td>Móng bè</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td><b>Sân</b></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Sân có tường bao che</td>
+                        <td>0.7</td>
+                    </tr>
+                    <tr>
+                        <td>Sân không có tường bao che</td>
+                        <td>0.5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="promotion">
+        <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+    </div>
+    <div class="detail-text">
+        <h6>Thiết kế trọn gói:</h6>
+        <p>Hợp đồng thi công suất đầu tư > 10tr/m² được giảm 30% phí thiết kế</p>
+        <p>Hợp đồng thi công suất đầu tư > 12tr/m² được giảm 50% phí thiết kế</p>
+        <p>Hợp đồng thi công suất đầu tư > 15tr/m² được giảm 100% phí thiết kế</p>
+        <h6> Thiết kế kiến trúc:</h6>
+        <p>Hợp đồng thi công thô & hoàn thiện suất đầu tư > 8tr/m² được giảm 100% phí thiết kế</p>
+        <h6> Thiết kế nội thất:</h6>
+        <p>Hợp đồng thi công nội thất suất đầu tư > 5tr/m² được giảm 100% phí thiết kế</p>
+        <h6> Lưu ý quan trọng đối với phần hoàn thiện và nội thất:</h6>
+        <p>
+            Khách hàng chỉ chi trả đúng giá niêm yết của nhà phân phối mọi sản phẩm, phần chiết khấu được xem là phí tư vấn của bên B.
+            Sản phẩm đang trong chương trình khuyến mãi, bên B tính 10% phí tư vấn trên giá niêm yết của nhà phân phối, (ví dụ sofa giá 10.000.000 giảm 30% còn 7.000.000 thì phí tư vấn 10% cho bên B là 1.000.000).
+        </p>
+        <p>Bất kỳ hạng mục nào bên A lược bỏ bớt để tự cung cấp, bên B sẽ tính phí nhân công lắp đặt, bao gồm vật tư (nếu có) và tính lại phần ưu đãi giá thiết kế theo suất đầu tư trên mỗi mét vuông cho bên A.</p>
+    </div>
+</div>
+<div class="partner">
+    <p>ĐỐI TÁC CHÚNG TÔI</p>
+    <div class="owl-carousel owl-theme" id="my-owl">
+        <div class="item">
+            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
+        </div>
+        <div class="item">
+            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
+        </div>
+        <div class="item">
+            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
+        </div>
+        <div class="item">
+            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
+        </div>
+        <div class="item">
+            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
+        </div>
+        <div class="item">
+            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
+        </div>
+        <div class="item">
+            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
+        </div>
+        <div class="item">
+            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
+        </div>
+        <div class="item">
+            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
+        </div>
+        <div class="item">
+            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
+        </div>
+    </div>
+</div>
+<script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                600: {
+                    items: 3
+                },
+                800: {
+                    items: 4
+                },
+                1000: {
+                    items: 6
+                }
+            }
+        })
+</script>
+
+

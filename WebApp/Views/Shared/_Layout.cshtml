@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/fonts/fontawesome/css/all.css" rel="stylesheet" />
+    <link href="~/Content/StyleLayout.css" rel="stylesheet" />
+    <link href="~/olwcarousel/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/olwcarousel/css/owl.theme.default.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/olwcarousel/js/owl.carousel.min.js"></script>
+    <link href="~/Content/responsive.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="app">
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar-css">
+            <div class="container-fluid " id="container-css">
+                <div class="row">
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="col-md-4">
+                            <a class="navbar-brand " id="link-img" href="#">
+                                <img id="logo" class="img-circle" src="~/img/logo.jpg" alt="Alternate Text" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="collapse navbar-collapse col-md-8" id="collapsibleNavbar">
+                        <ul class="nav navbar-nav " id="collap-ul">
+                            <li id="nav-item">
+                                <a class="" id="nav-link-css" href="#">Trang chủ</a>
+                            </li>
+                            <li class="dropdown" id="nav-item">
+                                <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Giới thiệu <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">link</a></li>
+                                    <li><a href="#">link</a></li>
+                                    <li><a href="#">link</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown" id="nav-item">
+                                <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Kiến trúc<span class="caret"></span></a>
+                                <ul class="dropdown-menu" id="dropdown-css">
+                                    <li id="dropdown-li">
+                                        <ul id="dropdown-ul">
+                                            <li id="dropdown-ul-item">
+                                                <p><u>DỰ ÁN</u></p>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Show room, shop, building, office</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Spa, beauty salon</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Khách sạn, resort</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bar, cafe, nhà hàng, karaoke</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Nhà Phố</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Căn hộ, penthouse</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Biệt thự</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Concept</a>
+                                            </li>
+                                        </ul>
+                                        <ul id="dropdown-ul">
+                                            <li id="dropdown-ul-item">
+                                                <p><u>THƯ VIỆN</u></p>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Phòng khách</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bếp, phòng ăn</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Phòng ngủ</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Phòng trẻ em</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Sân thượng</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown" id="nav-item">
+                                <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Nội thất<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">link</a></li>
+                                    <li><a href="#">link</a></li>
+                                    <li><a href="#">link</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown" id="nav-item">
+                                <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Xây dựng<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">link</a></li>
+                                    <li><a href="#">link</a></li>
+                                    <li><a href="#">link</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown" id="nav-item">
+                                <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Phong thủy<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">link</a></li>
+                                    <li><a href="#">link</a></li>
+                                    <li><a href="#">link</a></li>
+                                </ul>
+                            </li>
+                            <li class="" id="nav-item">
+                                <a id="nav-link-css" class="navbar-link" href="#">Tin tức</a>
+                            </li>
+                            <li class="" id="nav-item">
+                                <a id="nav-link-css" class="navbar-link" href="#">Liên hệ</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="contact ">
+                <ul>
+                    <li>
+                        <a href="">
+                            <img src="~/img/phone.png" alt="Alternate Text" width="50" height="50" id="contact-img"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="~/img/zalo.png" alt="Alternate Text" width="50" height="50" id="contact-img"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="~/img/mess.png" alt="Alternate Text" width="50" height="50" id="contact-img"/>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        @RenderBody()
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-8"id="footer-item">
+                        <ul>
+                            <li class="footer-title">
+                                <img src="~/img/logo.jpg" alt="Alternate Text" width="50" height="55" id="img-footer"/>
+                                <h5 >CÔNG TY TNHH KIẾN TRÚC NỘI THẤT KIẾN TƯỜNG CONCEPT</h5>
+                            </li>
+                            <li>
+                                
+                                <p><i class="fas fa-map-marker-alt"></i>276/31/73 Thống Nhất , Phường 16, Q. Gò Vấp, TP.HCM</p>
+                            </li>
+                            <li>
+                                
+                                <p><i class="fas fa-phone-alt"></i>0123456789</p>
+                            </li>
+                            <li>
+                                
+                                <p><i class="fas fa-envelope-open-text"></i>phanquockhanh9196@@gmail.com</p>
+                            </li>
+                            <li>
+                                
+                                <p><i class="fas fa-globe"></i> ktconcept.vn</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4"id="footer-item">
+                        <ul>
+                            <li>
+                                <h5>CHÍNH SÁCH</h5>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-arrow-right"></i>Chính sách bảo mật</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-arrow-right"></i>Chính sách thanh toán</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-arrow-right"></i>Chính sách bảo hành, bảo trì</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-arrow-right"></i>Hỗ trợ khách hàng</a>
+                            </li>
+                            <li>
+                                <img id="img-bct" src="~/img/bo-cong-thuong-1170x780.jpg" alt="Alternate Text" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-4"id="footer-item">
+                        <ul>
+                            <li>
+                                <h5>DANH MỤC</h5>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-arrow-right"></i>Kiến trúc</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-arrow-right"></i>Nội thất</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-arrow-right"></i>Xây dựng</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-arrow-right"></i>Xem phong thủy</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-arrow-right"></i>Tin tức</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-arrow-right"></i>Liên hiện</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-8"id="">
+
+                    </div>
+                </div>
+                <hr />
+                <div class="footer-bottom">
+                    <div class="footer-bottom-item">
+                        <p>Copyright © 2016 Design by <b>KIEN TUONG CONCEPT</b></p>
+                    </div>
+                    <div class="footer-bottom-item">
+                        <p>Tổng truy cập: xxxx</p>
+                        <p>|</p>
+                        <p>Đang online: xxx</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
