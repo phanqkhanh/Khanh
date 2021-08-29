@@ -1,0 +1,789 @@
+﻿@model WebApp.Areas.Admin.Models.CreateProductViewModel
+@{
+    ViewBag.Title = "Index";
+}
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+    $(".nav>li").removeClass("active");
+    $(".qlsp").css({ "background-color": "#30a5ff", "color": "#fff" }); 
+    /*$(".sidebar ul.nav li a").css("background-color", "#30a5ff");*/
+</script>
+<div class="container-fluid" id="filter">
+    <form action="/" method="post">
+        <div class="row" id="filter-first">
+            <div class="input-group col-sm-6" id="search">
+                <input type="text" id="myInput" name="search" placeholder="Tìm kiếm theo tên...">
+            </div>
+            <div class="col-sm-6 text-right" id="create">
+                <input id="btn-create" class="btn btn-success" type="button" name="create" value="Thêm mới" data-toggle="modal" data-target="#modal-cr" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1" id="lbl-filter" style="display: flex; padding: 0 5px;">
+                <i class="fas fa-filter" style="margin-top: 10px;"></i>
+                <input class="btn-default" id="btn-filter" style=" padding: 4px 14px;" type="button" name="" value="Lọc" />
+            </div>
+            <div class="col-sm-2" id="filter-item">
+                <select class="btn-op-f" name="TenDanhSach">
+                    <option selected>Chọn</option>
+                    <option class="op-f">Kiến trúc</option>
+                    <option class="op-f">Nội thất</option>
+                    <option class="op-f">Xây dựng</option>
+                </select>
+            </div>
+            <div class="col-sm-3" id="filter-item">
+                <select class="btn-op-c" name="TenDanhSach">
+                </select>
+            </div>
+            <div class="col-sm-6" id="filter-item">
+                <select class="btn-op-t" name="TenDanhSach">
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<!---------------------------------------- ds hình ảnh------------------------------  -->
+<!---------------------------------------- ds hình ảnh------------------------------  -->
+<div class="container" id="list-product">
+    <table class="myTable table table-bordered table-hover ">
+        <thead>
+            <tr>
+                <th id="th-code">Mã</th>
+                <th id="th-title">Tiêu đề</th>
+                <th id="td-img">Hình ảnh</th>
+                <th id="td-category">Danh mục</th>
+                <th id="td-action">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody class="list-product-tbody" id="myTable">
+        </tbody>
+    </table>
+    <div class="loader"></div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            let nameF = "Chọn";
+            LoadProduct(nameF);
+            //tải option trang chính
+            $(".btn-op-f").change(function () {
+                $('.btn-op-t').empty();
+                var name = $('.btn-op-f').val();
+                $(".btn-op-c").empty();
+                var add = '<option>' + "Chọn" + '</option>';
+                $('.btn-op-c').append(add);
+                LoadC(name);
+            });
+            $(".btn-op-c").change(function () {
+                $('.btn-op-t').empty();
+                var add = '<option>' + "Chọn" + '</option>';
+                $('.btn-op-t').append(add);
+                var name = $(".btn-op-c").val();
+                if (name == null || name == "Chọn") {
+                    $(".btn-op-t").empty();
+                }
+                else {
+                    LoadT(name);
+                }
+            });
+            //tải option trang thêm mới
+            $(".btn-op-ff").change(function () {
+                $('.btn-op-tt').empty();
+                var name = $('.btn-op-ff').val();
+                $(".btn-op-cc").empty();
+                var add = '<option>' + "Chọn" + '</option>';
+                $('.btn-op-cc').append(add);
+                LoadCC(name);
+            });
+            $(".btn-op-cc").change(function () {
+                $('.btn-op-tt').empty();
+                var add = '<option>' + "Chọn" + '</option>';
+                $('.btn-op-tt').append(add);
+                var name = $(".btn-op-cc").val();
+                if (name == null || name == "Chọn") {
+                    $(".btn-op-tt").empty();
+                }
+                else {
+                    LoadTT(name);
+                }
+            });
+            // fiter sản phẩm bằng lọc
+            $("#btn-filter").click(function () {
+                var nameC = $(".btn-op-c").val();
+                var nameT = $(".btn-op-t").val();
+                if (nameC == null || nameC == "Chọn") {
+                    var nameF = $(".btn-op-f").val();
+                    if (nameF == "Chọn") {
+                        $(".loader").show();
+                        $('.list-product-tbody').empty();
+                        /*$('#list-product').empty();*/
+                        LoadProduct(nameF);
+                        $(".loader").hide();
+                    }
+                    else {
+                        $('.list-product-tbody').empty();
+                        /*$('#list-product').empty();*/
+                        $(".loader").show();
+                        LoadProduct(nameF);
+                        $(".loader").hide();
+                    }
+                    return;
+                }
+                if (nameT == null || nameT == "Chọn") {
+
+                    $('.list-product-tbody').empty();
+                    $/*('#list-product').empty();*/
+                    LoadProductC(nameC);
+                    return;
+                }
+                else if (nameT != null && nameT != "Chọn") {
+                    $('.list-product-tbody').empty();
+                    LoadProductCT(nameC, nameT)
+                }
+            });
+            //thêm sản phẩm
+            $("#btn-save").click(function () {
+                Create();
+            });
+        });
+
+        //Load product index or theo F
+        function LoadProduct(nameF) {
+            $(".loader").show();
+            $.ajax({
+                url: '/Admin/Product/ListProducts',
+                type: 'get',
+                data: {
+                    nameF: nameF
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        $.each(data.ls, function (k, v) {
+                            let tr = '<tr id="' + v.ID + '">'
+                            tr += '<td>' + v.ID + '</td>';
+                            tr += '<td id="td-' + v.ID + '">' + v.Title + '</td>';
+                            tr += '<td>';
+                            tr += '<img class="img-thumbnail" src="' + v.Img + '" id="tbody-img" alt="Alternate Text"/>';
+                            tr += '<p id="detail' + v.ID + '" class="dt-img" name="dt-img" data-toggle="modal" data-target="#mmyModal">Xem chi tiết</p>';
+                            tr += '</td>';
+                            tr += '<td>' + v.TypeName + '</td>';
+                            tr += '<td>';
+                            tr += '<button class="btn btn-primary" name="edit" id="btn-td" data-toggle="modal" data-target="#modal-edit">Sửa</button>';
+                            tr += '<br />';
+                            tr += '<button class="btn btn-danger" name="delete" id="btn-td">Xóa</button>'
+                            tr += '</td>';
+                            tr += '</tr>';
+                            $('.list-product-tbody').append(tr);
+                        });
+                        $(".loader").hide();
+                    }
+                }
+            });
+        }
+
+        //Load option Categories cho index
+        function LoadC(name) {
+            $.ajax({
+                url: '/Admin/Product/GetC',
+                type: 'GET',
+                data: {
+                    name: name
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        $.each(data.ls, function (k, v) {
+                            let opp = '<option>' + v.Title + '</option>';
+                            $('.btn-op-c').append(opp);
+                        });
+                    }
+                    if (data.code == 500) {
+                        $(".btn-op-c").empty();
+                    }
+                }
+            });
+        }
+
+        //Load option Type cho index
+        function LoadT(name) {
+            $.ajax({
+                url: '/Admin/Product/GetT',
+                type: 'GET',
+                data: {
+                    name: name
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        //let oppfirst = '<option id="op-first">' + "Chọn" + '</option>';
+                        //$("#btn-op-t").append(oppfirst);
+                        $.each(data.ls, function (k, v) {
+                            let opp = '<option>' + v.Title + '</option>';
+                            $(".btn-op-t").append(opp);
+                        })
+                    }
+                    if (data.code == 500) { }
+                }
+            });
+        }
+
+        //Load option Categories cho bảng Sửa
+        function LoadEditC(name, c) {
+            $.ajax({
+                url: '/Admin/Product/GetC',
+                type: 'GET',
+                data: {
+                    name: name
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        let o = '<option>Chọn</option>';
+                        $('.edit-btn-op-c').append(o);
+                        $.each(data.ls, function (k, v) {
+                            let opp = '<option>' + v.Title + '</option>';
+                            $('.edit-btn-op-c').append(opp);
+                        });
+                        if (c == null) {
+                            $(".edit-btn-op-c").val("Chọn");
+                        }
+                        else {
+                            $(".edit-btn-op-c").val(c);
+                        }
+                    }
+                    if (data.code == 500) {
+                        $("edit-btn-op-c").empty();
+                    }
+                }
+            });
+            
+        }
+
+        //Load option Type cho bảng Sửa
+        function LoadEditT(name, t) {
+            $.ajax({
+                url: '/Admin/Product/GetT',
+                type: 'GET',
+                data: {
+                    name: name
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        let o = '<option>Chọn</option>';
+                        $('.edit-btn-op-t').append(o);
+                        $.each(data.ls, function (k, v) {
+                            let opp = '<option>' + v.Title + '</option>';
+                            $(".edit-btn-op-t").append(opp);
+                        })
+                        if (t == null) {
+                            $(".edit-btn-op-t").val("Chọn");
+                        }
+                        else {
+                            $(".edit-btn-op-t").val(t);
+                        }
+                    }
+                    if (data.code == 500) { }
+                }
+            });
+        }
+
+        //Load option Categories cho bảng thêm sản phẩm
+        function LoadCC(name) {
+            $.ajax({
+                url: '/Admin/Product/GetC',
+                type: 'GET',
+                data: {
+                    name: name
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        $.each(data.ls, function (k, v) {
+                            let opp = '<option>' + v.Title + '</option>';
+                            $('.btn-op-cc').append(opp);
+                        });
+                    }
+                    if (data.code == 500) {
+                        $(".btn-op-cc").empty();
+                    }
+                }
+            });
+        }
+
+        //Load option Type cho bảng thêm sản phẩm
+        function LoadTT(name) {
+            $.ajax({
+                url: '/Admin/Product/GetT',
+                type: 'GET',
+                data: {
+                    name: name
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        $.each(data.ls, function (k, v) {
+                            let opp = '<option>' + v.Title + '</option>';
+                            $(".btn-op-tt").append(opp);
+                        })
+                    }
+                    if (data.code == 500) { }
+                }
+            });
+        }
+
+        //Load product khi Type = null
+        function LoadProductC(nameC) {
+            $(".loader").show();
+            $.ajax({
+                url: '/Admin/Product/GetProductC',
+                type: 'GET',
+                data: {
+                    nameC: nameC
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        $.each(data.ls, function (k, v) {
+                            let tr = '<tr id="' + v.ID + '">'
+                            tr += '<td>' + v.ID + '</td>';
+                            tr += '<td id="td-' + v.ID + '">' + v.Title + '</td>';
+                            tr += '<td>';
+                            tr += '<img class="img-thumbnail" src="' + v.Img + '" id="tbody-img" alt="Alternate Text"/>'
+                            tr += '<p id="detail' + v.ID + '" class="dt-img" name="dt-img" data-toggle="modal" data-target="#mmyModal">Xem chi tiết</p>';
+                            tr += '</td>';
+                            tr += '<td>' + v.TypeName + '</td>';
+                            tr += '<td>';
+                            tr += '<button class="btn btn-primary" name="edit" id="btn-td" data-toggle="modal" data-target="#modal-edit">Sửa</button>';
+                            tr += '<br />';
+                            tr += '<button class="btn btn-danger" name="delete" id="btn-td">Xóa</button>'
+                            tr += '</td>';
+                            tr += '</tr>';
+                            $('.list-product-tbody').append(tr);
+                        });
+
+                        $(".loader").hide();
+                    }
+                }
+            })
+        }
+
+        // Load product theo all option
+        function LoadProductCT(nameC, nameT) {
+            $(".loader").show();
+            $.ajax({
+                url: '/Admin/Product/GetProductCT',
+                type: 'GET',
+                data: {
+                    nameC: nameC,
+                    nameT: nameT
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        $.each(data.ls, function (k, v) {
+                            let tr = '<tr id="' + v.ID + '">'
+                            tr += '<td>' + v.ID + '</td>';
+                            tr += '<td id="td-' + v.ID + '">' + v.Title + '</td>';
+                            tr += '<td>';
+                            tr += '<img class="img-thumbnail" src="' + v.Img + '" id="tbody-img" alt="Alternate Text"/>';
+                            tr += '<p id="detail' + v.ID + '" class="dt-img" name="dt-img" data-toggle="modal" data-target="#mmyModal">Xem chi tiết</p>';
+                            tr += '</td>'; 
+                            tr += '<td>' + v.TypeName + '</td>';
+                            tr += '<td>';
+                            tr += '<button class="btn btn-primary" name="edit" id="btn-td" data-toggle="modal" data-target="#modal-edit">Sửa</button>';
+                            tr += '<br />';
+                            tr += '<button class="btn btn-danger" name="delete" id="btn-td">Xóa</button>'
+                            tr += '</td>';
+                            tr += '</tr>';
+                            $('.list-product-tbody').append(tr);
+                        });
+                        $(".loader").hide();
+                    }
+                }
+            })
+        }
+
+        //chức năng thêm sp
+        function Create() {
+            var data = new FormData;
+            var Fn = $(".btn-op-ff").val();
+            var Ct = $(".btn-op-cc").val();
+            var Tp = $(".btn-op-tt").val();
+            var inputTitle = $("#input-title").val();
+            var file = $("#myfile").get(0).files;
+            var inputMetaTitle = $("#input-metaTitle").val();
+            //tat ca img
+            var ImgDetails = document.getElementById("myfile-details").files.length;
+            for (var i = 0; i < ImgDetails; i++) {
+                var f = document.getElementById("myfile-details").files[i];
+                data.append("ImgDetails", f);
+            }
+            data.append("FunctionName", Fn);
+            data.append("CategoriesName", Ct);
+            data.append("TypeName", Tp);
+            data.append("Title", inputTitle);
+            data.append("ImageFile", file[0]);
+            data.append("MetaTitle", inputMetaTitle);
+            $.ajax({
+                url: '/Admin/Product/Create',
+                type: 'POST',
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.code == 200) {
+                        /*LoadProduct("Chọn");*/
+                        $.each(data.ls, function (k, v) {
+                            let tr = '<tr id="' + v.ID + '">'
+                            tr += '<td>' + v.ID + '</td>';
+                            tr += '<td id="td-' + v.ID + '">' + v.Title + '</td>';
+                            tr += '<td>';
+                            tr += '<img class="img-thumbnail" src="' + v.Img + '" id="tbody-img" alt="Alternate Text"/>';
+                            tr += '<p id="detail' + v.ID + '" class="dt-img" name="dt-img" data-toggle="modal" data-target="#mmyModal">Xem chi tiết</p>';
+                            tr += '</td>';
+                            tr += '<td>' + v.TypeName + '</td>';
+                            tr += '<td>';
+                            tr += '<button class="btn btn-primary" name="edit" id="btn-td" data-toggle="modal" data-target="#modal-edit">Sửa</button>';
+                            tr += '<br />';
+                            tr += '<button class="btn btn-danger" name="delete" id="btn-td">Xóa</button>'
+                            tr += '</td>';
+                            tr += '</tr>';
+                            $('.list-product-tbody').append(tr);
+                        });
+                        
+                        $("#snackbar").text("Đã thêm");
+                        $("#snackbar").show();
+                        setTimeout(function () { $("#snackbar").hide(); }, 2000);
+                        document.getElementById("create-frm").reset();
+                        /*document.getElementsByClassName("btn-op-ff").reset();*/
+                        $(".btn-op-cc").empty();
+                        $(".btn-op-tt").empty();
+                    }
+                }
+            });
+        }
+
+        // chức năng xóa
+        function Delete(id) {
+            $.ajax({
+                url: '/Admin/Product/DeleteProduct',
+                type: 'POST',
+                data: { id: id },
+                success: function (data) {
+                    if (data.code == 200) {
+                        $("#" + id + "").remove();
+                        $("#snackbar").text("Xóa thành công");
+                        $("#snackbar").show();
+                        setTimeout(function () { $("#snackbar").hide(); }, 2000);
+                    }
+                    if (data.code == 500) {
+                        /*alert('xoa that bai');*/
+                    }
+                }
+            });
+        }
+
+
+
+
+
+
+        $(document).on('click', "button[name='delete']", function () {
+            let id = null;
+            id = $(this).closest('tr').attr('id');
+            var name = $("#td-" + id + "").text();
+            $("#nameDelete").text("" + name + "");
+            $(".ckeck-delete").show(200);
+            $(".btn-confirm").click(function () {
+                $(".ckeck-delete").hide(200);
+                Delete(id);
+            });
+            $(".btn-cancel").click(function () {
+                $(".ckeck-delete").hide(200);
+                $(".btn-confirm").off("click");
+            });
+        });
+        //$("#btn-out-edit").click(function () {
+        //    $("#btn-td").off("click");
+        //});
+        // tải lên product cần sửa
+        function LoadProductEdit(id) {
+            $.ajax({
+                url: '/Admin/Product/GetProductEdit',
+                type: 'GET',
+                data: { id: id },
+                success: function (data) {
+                    if (data.code == 200) {
+                        $.each(data.ls, function (k, v) {
+                            $("#edit-img-title").attr("src", "" + v.Img + "");
+                            $(".edit-btn-op-f").val(v.FunctionName);
+                            $(".edit-btn-op-c").empty();
+                            LoadEditC(v.FunctionName, v.CategoriesName);
+                            //$(".edit-btn-op-c").val("" + v.CategoriesName + ""); 
+                            //$(".edit-btn-op-c").val(v.CategoriesName);
+                            $(".edit-btn-op-t").empty();
+                            LoadEditT(v.CategoriesName, v.TypeName);
+                            //$(".edit-btn-op-t").val(v.TypeName);
+                            $("#edit-input-title").val(v.Title);
+                            $("#edit-input-metaTitle").val(v.MetaTitle);
+                            
+                        });
+                        
+                    }                    
+                    if (data.code == 500) {}
+                }
+            });
+        } 
+        // sự kiện click nút Sửa
+        $(document).on('click', "button[name='edit']", function () {
+            document.getElementById("edit-frm").reset();
+            var id = $(this).closest('tr').attr('id');
+            LoadProductEdit(id);
+            
+            if ($(".modal").show()) {
+                $(document).ready(function () {
+                    $("#btn-edit").click(function () {
+                        var data = new FormData;
+                        var Fn = $(".edit-btn-op-f").val();
+                        var Ct = $(".edit-btn-op-c").val();
+                        var Tp = $(".edit-btn-op-t").val();
+                        var inputTitle = $("#edit-input-title").val();
+                        var file = $("#fileTitle").get(0).files;
+                        var inputMetaTitle = $("#edit-input-metaTitle").val();
+                        //tat ca img
+                        var ImgDetails = document.getElementById("Allfile-details").files.length;
+                        for (var i = 0; i < ImgDetails; i++) {
+                            var f = document.getElementById("Allfile-details").files[i];
+                            data.append("ImgDetails", f);
+                        }
+                        data.append("ID", id);
+                        data.append("FunctionName", Fn);
+                        data.append("CategoriesName", Ct);
+                        data.append("TypeName", Tp);
+                        data.append("Title", inputTitle);
+                        data.append("ImageFile", file[0]);
+                        data.append("MetaTitle", inputMetaTitle);
+                        $.ajax({
+                            url: '/Admin/Product/EditProduct',
+                            type: 'POST',
+                            data: data,
+                            contentType: false,
+                            processData: false,
+                            success: function (data) {
+                                if (data.code == 200) {
+                                    $.each(data.ls, function (k, v) {
+                                        let tr = '<tr id="' + v.ID + '">'
+                                        tr += '<td>' + v.ID + '</td>';
+                                        tr += '<td id="td-' + v.ID + '">' + v.Title + '</td>';
+                                        tr += '<td>';
+                                        tr += '<img class="img-thumbnail" src="' + v.Img + '" id="tbody-img" alt="Alternate Text"/>';
+                                        tr += '<p id="detail' + v.ID + '" class="dt-img" name="dt-img" data-toggle="modal" data-target="#mmyModal">Xem chi tiết</p>';
+                                        tr += '</td>';
+                                        tr += '<td>' + v.TypeName + '</td>';
+                                        tr += '<td>';
+                                        tr += '<button class="btn btn-primary" name="edit" id="btn-td" data-toggle="modal" data-target="#modal-edit">Sửa</button>';
+                                        tr += '<br />';
+                                        tr += '<button class="btn btn-danger" name="delete" id="btn-td">Xóa</button>'
+                                        tr += '</td>';
+                                        tr += '</tr>';
+                                        $('#' + id + '').after(tr);
+                                        $('#' + id + '').remove();
+                                    });
+
+                                    $("#snackbar").text("Sửa thành công");
+                                    $("#snackbar").show();
+                                    setTimeout(function () { $("#snackbar").hide(); }, 2000);
+                                    $("#btn-out-edit").click();
+                                    document.getElementById("edit-frm").reset();
+                                    document.getElementsByClassName("edit-btn-op-f").reset();
+                                    $(".edit-btn-op-cc").empty();
+                                    $(".edit-btn-op-tt").empty();
+                                }
+                                if (data.code == 500) {
+                                    alert("Lỗi");
+                                }
+                            }
+                        });
+                    });
+                    $(".edit-btn-op-f").change(function () {
+                        var name = $(".edit-btn-op-f").val();
+                        $('.edit-btn-op-c').empty();
+                        $(".edit-btn-op-t").empty();
+                        if (name == null || name == "Chọn") {
+                            $(".edit-btn-op-c").empty();
+                        }
+                        else {
+                            LoadEditC(name);
+                        }
+                    });
+                    $(".edit-btn-op-c").change(function () {
+                        $('.edit-btn-op-t').empty();
+                        var name = $(".edit-btn-op-c").val();
+                        if (name == null || name == "Chọn") {
+                            $(".edit-btn-op-t").empty();
+                        }
+                        else {
+                            LoadEditT(name);
+                        }
+                    });
+                    $("#img-detail-edit").click(function () {
+                        $("#edit-img-detail").empty();
+                        LoadEditImg(id);
+                    });
+                });
+            }
+            if ($(".modal").hide()) {
+                $(".edit-btn-op-f").off("change");
+                $(".edit-btn-op-c").off("change");
+                $("#btn-edit").off("click");
+                $("#img-detail-edit").off("click");
+            }
+                
+            });
+            
+        // lấy hình ảnh trong product detail
+        function LoadEditImg(id) {
+            $.ajax({
+                url: '/Admin/Product/GetEditImg',
+                type: 'GET',
+                data: { id: id },
+                success: function (data) {
+                    if (data.code == 200) {
+                        $.each(data.ls, function (k, v) {
+                            let img = '<div class="edit-img-details col-sm-3" id="'+v.Id+'" name="detele-img-edit">';
+                            img += '<img class="img-thumbnail" src="' + v.Img + '" />';
+                            img += '<p id="edit-delete-img">Xóa</p>';
+                            img += '</div>';
+                            $("#edit-img-detail").append(img);
+                        });
+                    }
+                    if (data.code == 500) {
+                        let p = '<p style="font-size: 15px; text-align: center; margin-top: 20px;">Không có hình ảnh...</p>';
+                        $("#edit-img-detail").append(p);
+                    }
+                }
+            });
+        }
+
+        // sự kiện xóa ảnh trong edit
+        $(document).on('click', "div[name='detele-img-edit']", function () {
+            var id = $(this).closest('div').attr('id');
+            DeleteImgEdit(id);
+        });
+        function DeleteImgEdit(id) {
+            $.ajax({
+                url: '/Admin/Product/DeleteImgEdit',
+                type: 'POST',
+                data: { id: id },
+                success: function (data) {
+                    if (data.code == 200) {
+                        $("#" + id + "").remove();
+                    }
+                }
+            });
+        }
+
+
+        // Xử lí option của edit
+
+
+
+
+
+        // sự kiện xem chi tiết hình ảnh
+        $(document).on('click', "p[name='dt-img']", function () {
+            let id = $(this).closest('tr').attr('id');
+            $("#img-details-content-top").empty();
+            $("#row-img").empty();
+            $("#control-img").empty();
+            LoadAllImg(id);
+
+        });
+        function LoadAllImg(id) {
+            $.ajax({
+                url: '/Admin/Product/GetAllImg',
+                type: 'GET',
+                data: { id: id },
+                success: function (data) {
+                    if (data.code == 200) {
+                        var i = 1;
+                        $.each(data.ls, function (k, v) {
+                            let d = '<div class="mySlides">';
+                            d += '<div class="numbertext">' + i + ' / ' + data.ls.length + '</div>';
+                            d += '<img src="' + v + '">';
+                            d += '</div>';
+                            let imgbt = '<div class="column">';
+                            imgbt += '<img src="' + v + '" class="demo cursor" id="img-item-' + i + '" onclick="currentSlide(' + i + ')">';
+                            imgbt += '</div>';
+                            $("#img-details-content-top").append(d);
+                            $("#row-img").append(imgbt);
+                            i++;
+                        });
+                        let c = '<a class="prev" onclick="plusSlides(-1)"> ❮ </a>';
+                        c += '<a class="next" onclick="plusSlides(1)"> ❯ </a>';
+                        c += '<div class="caption-container">';
+                        c += '<p id="caption"> </p>';
+                        c += '</div>';
+                        $("#control-img").append(c);
+
+                        var slideIndex = 1;
+                        showSlides(slideIndex);
+                        function showSlides(n) {
+                            var i;
+                            var slides = document.getElementsByClassName("mySlides");
+                            var dots = document.getElementsByClassName("demo");
+                            if (n > slides.length) { slideIndex = 1 }
+                            if (n < 1) { slideIndex = slides.length }
+                            for (i = 0; i < slides.length; i++) {
+                                slides[i].style.display = "none";
+                            }
+                            for (i = 0; i < dots.length; i++) {
+                                dots[i].className = dots[i].className.replace(" active", "");
+                            }
+                            slides[slideIndex - 1].style.display = "block";
+                            dots[slideIndex - 1].className += " active";
+                        }
+
+                    }
+
+                    if (data.code == 500) {
+
+                    }
+                }
+            });
+        }
+        //$(document).ready(function () {
+
+
+        //});
+        function plusSlides(n) {
+            /*alert(n);*/
+            showSlides(slideIndex += n);
+        }
+        function currentSlide(n) {
+            /*alert(n);*/
+            showSlides(slideIndex = n);
+        }
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+}
+
+

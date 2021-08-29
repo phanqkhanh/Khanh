@@ -13,10 +13,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="~/olwcarousel/js/owl.carousel.min.js"></script>
     <link href="~/Content/responsive.css" rel="stylesheet" />
+    <style>
+        #navbar {
+            background-color: black;
+            height: 100px;
+            filter: opacity(0.7);
+            transition: top 0.3s;
+        }
+        .contact {
+            position: fixed;
+        }
+    </style>
 </head>
 <body>
     <div class="app">
-        <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar-css">
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
             <div class="container-fluid " id="container-css">
                 <div class="row">
                     <div class="navbar-header">
@@ -46,7 +57,7 @@
                             </li>
                             <li class="dropdown" id="nav-item">
                                 <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Kiến trúc<span class="caret"></span></a>
-                                <ul class="dropdown-menu" id="dropdown-css">
+                                <ul class="" id="dropdown-css">
                                     <li id="dropdown-li">
                                         <ul id="dropdown-ul">
                                             <li id="dropdown-ul-item">
@@ -77,6 +88,7 @@
                                                 <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Concept</a>
                                             </li>
                                         </ul>
+                                        <div class="hr"></div>
                                         <ul id="dropdown-ul">
                                             <li id="dropdown-ul-item">
                                                 <p><u>THƯ VIỆN</u></p>
@@ -102,18 +114,122 @@
                             </li>
                             <li class="dropdown" id="nav-item">
                                 <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Nội thất<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">link</a></li>
-                                    <li><a href="#">link</a></li>
-                                    <li><a href="#">link</a></li>
+                                <ul class="" id="dropdown-css">
+                                    <li id="dropdown-li">
+                                        <ul id="dropdown-ul">
+                                            <li id="dropdown-ul-item">
+                                                <p><u>CABINETPRO</u></p>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Giường</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bàn</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ tivi</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ đầu giường</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ hồ sơ</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Kệ sách</a>
+                                            </li>
+                                        </ul>
+                                        <div class="hr"></div>
+                                        <ul id="dropdown-ul">
+                                            <li id="dropdown-ul-item">
+                                                <p><u>ACONCEPT</u></p>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Sofa</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bàn</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Ghế</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Giường</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ</a>
+                                            </li>
+                                        </ul>
+                                        <div class="hr"></div>
+                                        <ul id="dropdown-ul">
+                                            <li id="dropdown-ul-item">
+                                                <p><u>BOCONCEPT</u></p>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Sofa</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bàn</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Giường</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="dropdown" id="nav-item">
                                 <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Xây dựng<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">link</a></li>
-                                    <li><a href="#">link</a></li>
-                                    <li><a href="#">link</a></li>
+                                <ul class="" id="dropdown-css">
+                                    <li id="dropdown-li">
+                                        <ul id="dropdown-ul">
+                                            <li id="dropdown-ul-item">
+                                                <p><u>THẠCH CAO</u></p>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Ốp trần</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Vách ngăn</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Ốp ngoài trời</a>
+                                            </li>
+
+                                        </ul>
+                                        <div class="hr"></div>
+                                        <ul id="dropdown-ul">
+                                            <li id="dropdown-ul-item">
+                                                <p><u>SƠN, CHỐNG THẤM</u></p>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Dulux Easyclean</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Dulux WeatherShield</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Chống thấm tường</a>
+                                            </li>
+
+                                        </ul>
+                                        <div class="hr"></div>
+                                        <ul id="dropdown-ul">
+                                            <li id="dropdown-ul-item">
+                                                <p><u>CARAMIC-ĐÁ TỰ NHIÊN</u></p>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Đá tự nhiên</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Vietcaramics</a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="dropdown" id="nav-item">
@@ -134,56 +250,56 @@
                     </div>
                 </div>
             </div>
-            <div class="contact ">
-                <ul>
-                    <li>
-                        <a href="">
-                            <img src="~/img/phone.png" alt="Alternate Text" width="50" height="50" id="contact-img"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="~/img/zalo.png" alt="Alternate Text" width="50" height="50" id="contact-img"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="~/img/mess.png" alt="Alternate Text" width="50" height="50" id="contact-img"/>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
         </nav>
-        
+        <div class="contact ">
+            <ul>
+                <li>
+                    <a href="">
+                        <img src="~/img/phone.png" alt="Alternate Text" width="50" height="50" id="contact-img" />
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="~/img/zalo.png" alt="Alternate Text" width="50" height="50" id="contact-img" />
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="~/img/mess.png" alt="Alternate Text" width="50" height="50" id="contact-img" />
+                    </a>
+                </li>
+            </ul>
+        </div>
         @RenderBody()
         <footer>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-sm-8"id="footer-item">
+                    <div class="col-md-4 col-sm-8" id="footer-item">
                         <ul>
                             <li class="footer-title">
-                                <img src="~/img/logo.jpg" alt="Alternate Text" width="50" height="55" id="img-footer"/>
-                                <h5 >CÔNG TY TNHH KIẾN TRÚC NỘI THẤT KIẾN TƯỜNG CONCEPT</h5>
+                                <img src="~/img/logo.jpg" alt="Alternate Text" width="50" height="55" id="img-footer" />
+                                <h5>CÔNG TY TNHH KIẾN TRÚC NỘI THẤT KIẾN TƯỜNG CONCEPT</h5>
                             </li>
                             <li>
-                                
+
                                 <p><i class="fas fa-map-marker-alt"></i>276/31/73 Thống Nhất , Phường 16, Q. Gò Vấp, TP.HCM</p>
                             </li>
                             <li>
-                                
+
                                 <p><i class="fas fa-phone-alt"></i>0123456789</p>
                             </li>
                             <li>
-                                
+
                                 <p><i class="fas fa-envelope-open-text"></i>phanquockhanh9196@@gmail.com</p>
                             </li>
                             <li>
-                                
+
                                 <p><i class="fas fa-globe"></i> ktconcept.vn</p>
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-4"id="footer-item">
+                    <div class="col-md-4" id="footer-item">
                         <ul>
                             <li>
                                 <h5>CHÍNH SÁCH</h5>
@@ -205,7 +321,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-2 col-sm-4"id="footer-item">
+                    <div class="col-md-2 col-sm-4" id="footer-item">
                         <ul>
                             <li>
                                 <h5>DANH MỤC</h5>
@@ -230,7 +346,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-4 col-sm-8"id="">
+                    <div class="col-md-4 col-sm-8" id="">
 
                     </div>
                 </div>
@@ -248,6 +364,19 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+            } else {
+                document.getElementById("navbar").style.top = "-100px";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+    </script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

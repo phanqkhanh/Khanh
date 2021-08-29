@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -45,6 +46,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -121,7 +128,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Models\CategoriesViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CreateProductViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\EditProductViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ProductDetailViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ProductViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TypeeViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -129,10 +143,53 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AssetAdmin\css\bootstrap-table.css" />
+    <Content Include="Content\AssetAdmin\css\bootstrap-theme.css" />
+    <Content Include="Content\AssetAdmin\css\bootstrap-theme.min.css" />
+    <Content Include="Content\AssetAdmin\css\bootstrap.css" />
+    <Content Include="Content\AssetAdmin\css\bootstrap.min.css" />
+    <Content Include="Content\AssetAdmin\css\Content.css" />
+    <Content Include="Content\AssetAdmin\css\datepicker.css" />
+    <Content Include="Content\AssetAdmin\css\datepicker3.css" />
+    <Content Include="Content\AssetAdmin\css\font-awesome.min.css" />
+    <Content Include="Content\AssetAdmin\css\styles.css" />
+    <Content Include="Content\AssetAdmin\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\AssetAdmin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\AssetAdmin\js\bootstrap-datepicker.js" />
+    <Content Include="Content\AssetAdmin\js\bootstrap.js" />
+    <Content Include="Content\AssetAdmin\js\bootstrap.min.js" />
+    <Content Include="Content\AssetAdmin\js\chart-data.js" />
+    <Content Include="Content\AssetAdmin\js\chart.min.js" />
+    <Content Include="Content\AssetAdmin\js\custom.js" />
+    <Content Include="Content\AssetAdmin\js\easypiechart-data.js" />
+    <Content Include="Content\AssetAdmin\js\easypiechart.js" />
+    <Content Include="Content\AssetAdmin\js\html5shiv.min.js" />
+    <Content Include="Content\AssetAdmin\js\jquery-3.4.1.min.js" />
+    <Content Include="Content\AssetAdmin\js\lumino.glyphs.js" />
+    <Content Include="Content\AssetAdmin\js\npm.js" />
+    <Content Include="Content\AssetAdmin\js\respond.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Img\Carousel\sliderBT1.jpg" />
+    <Content Include="Content\Img\Carousel\sliderBT10.jpg" />
+    <Content Include="Content\Img\Carousel\sliderBT11.jpg" />
+    <Content Include="Content\Img\Carousel\sliderBT12.png" />
+    <Content Include="Content\Img\Carousel\sliderBT2.jpg" />
+    <Content Include="Content\Img\Carousel\sliderBT3.jpg" />
+    <Content Include="Content\Img\Carousel\sliderBT4.jpg" />
+    <Content Include="Content\Img\Carousel\sliderBT5.jpg" />
+    <Content Include="Content\Img\Carousel\sliderBT6.jpg" />
+    <Content Include="Content\Img\Carousel\sliderBT7.png" />
+    <Content Include="Content\Img\Carousel\sliderBT8.png" />
+    <Content Include="Content\Img\Carousel\sliderBT9.jpg" />
+    <Content Include="Content\Img\Carousel\sliderTop1.jpg" />
+    <Content Include="Content\Img\Carousel\sliderTop2.jpg" />
+    <Content Include="Content\Img\Carousel\sliderTop3.jpg" />
+    <Content Include="Content\Img\Carousel\sliderTop4.jpg" />
+    <Content Include="Content\Img\Carousel\sliderTop5.jpg" />
+    <Content Include="Content\Img\Carousel\sliderTop6.jpg" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\StyleLayout.css" />
     <Content Include="favicon.ico" />
@@ -1790,6 +1847,7 @@
     <Content Include="img\biet-thu-dep-nhat-viet-nam-1.jpg" />
     <Content Include="img\biet-thu-dep-nhat.jpg" />
     <Content Include="img\bo-cong-thuong-1170x780.jpg" />
+    <Content Include="img\k.jpg" />
     <Content Include="img\logo.jpg" />
     <Content Include="img\mess.png" />
     <Content Include="img\phone.png" />
@@ -1808,7 +1866,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Default\Index.cshtml" />
     <Content Include="fonts\fontawesome\less\brands.less" />
     <Content Include="fonts\fontawesome\less\fontawesome.less" />
     <Content Include="fonts\fontawesome\less\regular.less" />
@@ -1863,6 +1920,26 @@
     <Content Include="fonts\fontawesome\webfonts\fa-solid-900.ttf" />
     <Content Include="fonts\fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="fonts\fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Areas\Admin\Views\Login\login.cshtml" />
+    <Content Include="Content\AssetAdmin\css\bootstrap-theme.css.map" />
+    <Content Include="Content\AssetAdmin\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\AssetAdmin\css\bootstrap.css.map" />
+    <Content Include="Content\AssetAdmin\css\bootstrap.min.css.map" />
+    <Content Include="Content\AssetAdmin\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\AssetAdmin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\AssetAdmin\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\AssetAdmin\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\AssetAdmin\fonts\FontAwesome.otf" />
+    <Content Include="Content\AssetAdmin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\AssetAdmin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\AssetAdmin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\AssetAdmin\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\AssetAdmin\sass\.sass-cache\deff34d1f5b7167181b556002c25068d6adc024d\styles.scssc" />
+    <Content Include="Content\AssetAdmin\sass\styles.scss" />
+    <Content Include="Content\AssetAdmin\tables\data1.json" />
+    <Content Include="Content\AssetAdmin\tables\data2.json" />
+    <Content Include="Areas\Admin\Views\Login\LoginIndex.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1909,6 +1986,16 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseIO\DatabaseIO.csproj">
+      <Project>{457c9a00-fc38-40c7-8707-cd2f87642e49}</Project>
+      <Name>DatabaseIO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseProvider\DatabaseProvider.csproj">
+      <Project>{6E7E502A-294B-4743-B6D3-0F8C97647F6D}</Project>
+      <Name>DatabaseProvider</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -1942,7 +2029,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

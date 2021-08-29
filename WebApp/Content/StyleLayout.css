@@ -5,11 +5,6 @@
 .app{
     position: relative;
 }
-#navbar-css {
-    background-color: black;
-    height: 100px;
-    filter: opacity(0.7);
-}
 
 #collapsibleNavbar {
     padding: 0;
@@ -44,17 +39,15 @@
     color: white;
     font-weight: 600;
     padding: 0px;
-    
 }
-
-#nav-link-css:focus {
-     background-color: darkblue;
-     color: yellow;
-}
-
 #nav-link-css:hover {
-     color: yellow;
+    color: yellow;
 }
+#nav-link-css:focus {
+    
+    color: yellow;
+}
+
 #nav-link-css:focus {
      background-color: black; 
 }
@@ -63,19 +56,25 @@
     to{ opacity : 1 ;}
 }
 #dropdown-css {
-    background: darkslategray;
-    width: 600px;
-    margin-top: 32px;
-    margin-left: -220px;
-    animation: drop ease 1.5s;
+    display: none;
+    background: black;
+    width: 600%;
+    margin-top: 10px;
+    margin-left: -230px;
+    animation: drop ease 1s;
+    position: absolute;
+    padding-top: 20px;
+    padding-left: 0;
 }
 
 #dropdown-li {
     display: flex;
+    width: 95%;
 }
 
 #dropdown-ul {
     width: 50%;
+    padding: 0; 
 }
 
 #dropdown-ul-item {
@@ -93,7 +92,20 @@
 #dropdown-ul-item a {
     font-size: 16px;
     color: white;
+    text-decoration: none;
 }
+#dropdown-ul-item a:hover{
+    color: yellow;
+}
+
+#nav-item:hover #dropdown-css {
+    display: block;
+}
+.hr{
+    border-right: 1px solid white;
+
+}
+
 #slider {
     padding: 0;
     margin-top: -50px;

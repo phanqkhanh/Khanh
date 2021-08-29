@@ -1,0 +1,170 @@
+﻿
+#filter {
+    margin-top: 20px;
+}
+
+#search > input {
+    padding: 5px 10px;
+    width: 300px;
+    border-radius: 5px;
+    margin-bottom: 15px; 
+}
+#filter-item{
+    padding: 0;
+}
+#filter-item select{
+    padding: 5px 5px;
+    width: 95%;
+    font-weight: 500;
+    margin-bottom: 31px;
+}
+#list-product {
+    width: 100%;
+    height:auto;
+    padding:0;
+}
+
+#list-product > table > thead > tr > th{
+    text-align: center;
+    font-size: 18px;
+}
+
+#th-code {
+    width: 7%;
+}
+#th-title{
+    width: 30%;
+}
+#td-img {
+    width: 20%;
+}
+#td-category {
+    width: 30%;
+}
+#td-action {
+    width: 13%;
+}
+#list-product-tbody {
+    height: 100px;
+}
+
+#list-product-tbody > tr > td{
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#tbody-img{
+    width:150px;
+    height: 110px;
+}
+
+/*---------------------------------------------------------------*/
+/*---------------------------------------------------------------*/
+#crt {
+    width: 60%;
+    box-sizing: border-box;
+    border: 1px solid #90a7ff;
+    background-color: #e6e4e4;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 0;
+    border-radius: 5px;
+}
+#crt > form > h4{
+    font-weight: 600;
+    padding: 10px;
+    background-color: #4055fc;
+    margin: 0;
+}
+#crt > form > hr{
+
+}
+#crt label{
+    margin-left: 10px;
+}
+#crt > form > div{
+    display: flex;
+}
+#img-product > input {
+    padding-left: 5px;
+}
+#option > div > select {
+    width: 30%;
+    padding: 5px 0px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+#option > div > select > option{
+    
+}
+#n-product > input {
+    display: block;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: none;
+    max-width: initial;
+    width: 72.5%;
+    margin-left: 5px;
+}
+#btn-cre {
+    justify-content: flex-end;
+    margin-right: 10%;
+    margin-bottom: 25px;
+}
+#btn-cre >input{
+    width: 70px;
+    margin-left: 20px;
+}
+/* -----------------------------load--------------------------- */
+.loader {
+    display: none;
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    border-bottom: 5px solid #3498db;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+    margin-top: 200px
+}
+
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#filter-first{
+    display: flex; 
+}
+
+input.paginate_control_prev {
+    padding: 3px 14px;
+    background-color: black;
+    color: white;
+}
+input.paginate_control_next {
+    padding: 3px 14px;
+    background-color: black;
+    color: white;
+}

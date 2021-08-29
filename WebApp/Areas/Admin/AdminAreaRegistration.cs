@@ -17,8 +17,13 @@ namespace WebApp.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "login", id = UrlParameter.Optional }
             );
+            //context.MapRoute(
+            //    "Admin_xemsp",
+            //    "Admin/{xem-san-pham}/{action}/{id}",
+            //    new { controller = "Product", action = "Index", id = UrlParameter.Optional }
+            //);
         }
     }
 }

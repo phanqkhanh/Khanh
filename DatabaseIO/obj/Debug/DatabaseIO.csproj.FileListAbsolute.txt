@@ -1,0 +1,15 @@
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\bin\Debug\DatabaseIO.dll.config
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\bin\Debug\DatabaseIO.dll
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\bin\Debug\DatabaseIO.pdb
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\bin\Debug\DatabaseProvider.dll
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\bin\Debug\EntityFramework.dll
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\bin\Debug\DatabaseProvider.pdb
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\bin\Debug\DatabaseProvider.dll.config
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\bin\Debug\EntityFramework.xml
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\obj\Debug\DatabaseIO.csproj.AssemblyReference.cache
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\obj\Debug\DatabaseIO.csproj.CoreCompileInputs.cache
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\obj\Debug\DatabaseIO.csproj.CopyComplete
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\obj\Debug\DatabaseIO.dll
+C:\Users\quock\Desktop\New folder\WebApp\DatabaseIO\obj\Debug\DatabaseIO.pdb

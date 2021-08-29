@@ -1,40 +1,667 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/AssetAdmin/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/AssetAdmin/css/datepicker3.css" rel="stylesheet" />
+    <link href="~/Content/AssetAdmin/css/styles.css" rel="stylesheet" />
+    <link href="~/fonts/fontawesome/css/all.css" rel="stylesheet" />
+    <link href="~/Content/AssetAdmin/css/Content.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--Custom Font-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        #btn-td {
+            width: 90%;
+            margin-top: 20px;
+        }
+        .paging-btn {
+            padding: 5px 10px;
+            margin-left: 3px;
+        }
+        div#buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        th {
+            text-align: center;
+            font-size: 18px;
+        }
+        td {
+            text-align: center;
+        }
+        .ckeck-delete {
+            border: 1px solid #68f;
+            border-radius: 10px;
+            width: 20%;
+            height: 140px;
+            background-color: #e6e4e4;
+            position: fixed;
+            left: 43%;
+            top: 200px;
+            z-index: 100;
+            overflow: hidden;
+            display: none;
+        }
+        .delete-item-top {
+            background-color: #4055fc;
+        }
+        .delete-item-top >p{
+            font-size: 16px;
+            font-weight: bold;
+            padding: 2px 10px;
+            color: black;
+        }
+        .delete-item-content {
+            text-align: center;
+            width: 80%;
+            margin: auto;
+            margin-top: 20px;
+            height: 55px;
+        }
+        .delete-item-footer {
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .delete-item-content > p {
+            font-size: 12px;
+        }
+        .delete-item-footer > input {
+            padding: 3px 6px;
+        }
+        .delete-item-footer > input:hover {
+            background-color: #d1d1d1;
+        }
+        #snackbar {
+            display: none;
+            min-width: 150px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            padding: 6px 20px;
+            position: fixed;
+            z-index: 1111;
+            left: 56%;
+            bottom: 40vh;
+            font-size: 17px;
+            filter: opacity(0.7);
+        }
+
+            #snackbar.show {
+                visibility: visible;
+            }
+        #img-detail:hover{
+            color: #000df8;
+        }
+        .mySlides {
+            text-align: center;
+        }
+        .mySlides > img{
+            width: 100%;
+            height: 300px;
+        }
+        .cursor {
+            cursor: pointer;
+        }
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 40%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+            .prev:hover,
+            .next:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 2px 4px;
+            position: absolute;
+            top: 0;
+            font-weight: 600;
+            background-color: #373737;
+        }
+        .caption-container {
+            text-align: center;
+            background-color: #5c3737;
+            padding: 2px 16px;
+        }
+        #row-img:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .column {
+            float: left;
+            width: 16.66%;
+
+        }
+        .demo {
+            opacity: 0.6;
+        }
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+        .img-details {
+            width: 30vw;
+            height: auto;
+            margin: auto;
+            border: 10px solid #ca9b9b;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            min-height: 406px;
+        }
+        #img-details-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            padding: 0;
+            background-color: white;
+            border: 5px solid #62d6dd;
+            border-radius: 5px;
+        }
+        div#row-img {
+            width: 100%;
+            margin: 0;
+            max-height: 125px;
+            overflow: hidden;
+        }
+        div#row-img > .column > img{
+            width: 100%;
+            height: 10vh;
+        }
+        #form-img-detai {
+            border: 1px solid #2f78fc;
+            width: 40vw;
+            height: auto;
+            background-color: #e6e4e4;
+            position: fixed;
+            z-index: 1;
+            left: 32%;
+            top: 11%;
+            border-radius: 10px;
+            min-height: 470px;
+        }
+        div#img-details-content-top {
+            width: 378px;
+            height: 300px;
+        }
+            #form-img-detai > p {
+                font-size: 16px;
+                padding: 10px 20px;
+                color: black;
+                font-weight: 600;
+                background-color: #4055fc;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+        .dt-img {
+            margin: auto;
+            margin-bottom: 0;
+            margin-top: 5px;
+            font-size: 13px;
+            width: 80px;
+            cursor: pointer;
+        }
+        .dt-img:hover{
+            color: #3640ff;
+            text-decoration: underline;
+        }
+        #close-modal {
+            position: absolute;
+            right: 10px;
+            top: -4px;
+            font-size: 50px;
+            color: white;
+        }
+        #modal-edit {
+            /*display: block;
+            padding-right: 17px;*/
+        }
+        #edit {
+            width: 60%;
+            box-sizing: border-box;
+            border: 1px solid #90a7ff;
+            background-color: #e6e4e4;
+            position: absolute;
+            left: 0;
+            right: 0;
+            padding: 0;
+            border-radius: 5px;
+        }
+            #edit label {
+                margin-left: 10px;
+            }
+        #edit-img-product > input {
+            padding-left: 5px;
+        }
+        #btn-fun-edit {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 10%;
+            margin-bottom: 25px;
+        }
+        #btn-fun-edit > input{
+            width: 70px;
+            margin-left: 20px;
+        }
+        p#delete-img {
+            position: absolute;
+            top: 40%;
+            font-size: 10px;
+        }
+        .edit-img-details{
+            padding: 5px;
+            position: relative;
+        }
+        .edit-img-details > img{
+            position: inherit;
+            width: 100%;
+            height: 110px;
+        }
+        .edit-img-details > p {
+            position: absolute;
+            top: 10%;
+            font-size: 10px;
+            font-weight: 700;
+            color: white;
+            right: 10%;
+            cursor: pointer;
+            transition: 0.4s;
+         }
+        .edit-img-details > p:hover {
+            font-size: 20px;
+        }
+        .sidebar ul.nav li a:focus {
+            color: #fff;
+            background-color: #30a5ff;
+        }
+    </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <a class="navbar-brand" href="#"><span>Hello&nbsp;</span>Khanh</a>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <em class="fa fa-envelope"></em><span class="label label-danger">15</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-messages">
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a href="profile.html" class="pull-left">
+                                        <img alt="image" class="img-circle" src="">
+                                    </a>
+                                    <div class="message-body">
+                                        <small class="pull-right">3 mins ago</small>
+                                        <a href="#"><strong>John Doe</strong> commented on <strong>your photo</strong>.</a>
+                                        <br /><small class="text-muted">1:24 pm - 25/03/2015</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="dropdown-messages-box">
+                                    <a href="profile.html" class="pull-left">
+                                        <img alt="image" class="img-circle" src="">
+                                    </a>
+                                    <div class="message-body">
+                                        <small class="pull-right">1 hour ago</small>
+                                        <a href="#">New message from <strong>Jane Doe</strong>.</a>
+                                        <br /><small class="text-muted">12:27 pm - 25/03/2015</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="all-button">
+                                    <a href="#">
+                                        <em class="fa fa-inbox"></em> <strong>All Messages</strong>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <em class="fa fa-bell"></em><span class="label label-info">5</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <em class="fa fa-envelope"></em> 1 New Message
+                                        <span class="pull-right text-muted small">3 mins ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <em class="fa fa-heart"></em> 12 New Likes
+                                        <span class="pull-right text-muted small">4 mins ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <em class="fa fa-user"></em> 5 New Followers
+                                        <span class="pull-right text-muted small">4 mins ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!----------------------------------------  xem hình ảnh------------------------------  -->
+    <!----------------------------------------  xem hình ảnh------------------------------  -->
+    <!----------------------------------------  xem hình ảnh------------------------------  -->
+    <div class=" modal fade" id="mmyModal">
+        <div id="form-img-detai">
+            <p>Tất cả hình ảnh</p>
+            <button type="button" class="close" id="close-modal" data-dismiss="modal">&times;</button>
+            <div class="img-details">
+                <div class="container" id="img-details-content">
+                    <div id="img-details-content-top">
+                    </div>
+
+                    <div id="control-img">
+
+                    </div>
+
+                    <div class="row" id="row-img">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
+    <div class=" modal fade" id="edit-mmyModal" style="z-index: 2222;">
+        <div id="edit-form-img-detai" style="border: 1px solid #2f78fc; width: 40vw; height: auto; background-color: #e6e4e4; position: fixed; z-index: 1; left: 30%; top: 8%; border-radius: 10px; min-height: 150px;">
+            <p style="font-size: 16px; padding: 10px 20px; color: black; font-weight: 600; background-color: #4055fc; border-top-left-radius: 10px; border-top-right-radius: 10px;">Hình ảnh chi tiết</p>
+            <button type="button" class="close" id="close-modal" data-dismiss="modal" style="position: absolute; right: 10px; top: -4px; font-size: 50px; color: white;">&times;</button>
+            <div class="container-fluid" id="edit-img-detail">
+                
+            </div>
+        </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <!----------------------------delete-------------------------->
+    <!----------------------------delete-------------------------->
+
+    <div class="ckeck-delete">
+        <div class="delete-item-top">
+            <p>Xóa</p>
+        </div>
+        <div class="delete-item-content">
+            <p>Bạn muốn xóa <b id="nameDelete"> </b></p>
+        </div>
+        <div class="delete-item-footer">
+            <input class="btn btn-success btn-confirm" type="button" value="Xác nhận" />
+            <input class="btn btn-danger btn-cancel" type="button" value="Hủy bỏ" />
+        </div>
+    </div>
+    <div id="snackbar"></div>
+
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <div class="profile-sidebar">
+            <div class="profile-userpic">
+                <img src="~/img/k.jpg" class="img-responsive" alt="">
+            </div>
+            <div class="profile-usertitle">
+                <div class="profile-usertitle-name">Khanh</div>
+                <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="divider"></div>
+        <ul class="nav menu">
+            <li class="active"><a href="/Admin/Login/LoginIndex"><i class="fas fa-house-user"></i>&nbsp; Trang chủ</a></li>
+            @*<li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
+                <li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
+                <li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
+                <li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>*@
+
+            @*<li class="parent ">
+                    <a data-toggle="collapse" href="#sub-item-1">
+                        <em class="fa fa-navicon">&nbsp;</em> Quản lí sản phẩm <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                    </a>
+                    <ul class="children collapse" id="sub-item-1">
+                        <li>
+                            <a class="" href="/Admin/Product/Index">
+                                <span class="fa fa-arrow-right">&nbsp;</span> Xem sản phẩm
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="/Admin/Product/Create">
+                                <span class="fa fa-arrow-right">&nbsp;</span> Thêm sản phẩm mới
+                            </a>
+                        </li>
+                    </ul>
+                </li>*@
+            <li><a class="qlsp" href="/Admin/Product/Index"><i class="fas fa-database"></i>&nbsp; Quản lí sản phẩm</a></li>
+            <li><a href="elements.html"><i class="fas fa-cog"></i>&nbsp; Cài đặt</a></li>
+            <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Đăng xuất</a></li>
+        </ul>
+    </div><!--/.sidebar-->
+
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="#">
+                        <em class="fa fa-home"></em>
+                    </a>
+                </li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </div><!--/.row-->
+        <!--<div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header">Trang chủ</h3>
+            </div>
+        </div>-->
+        <!--/.row-->
+
+        @RenderBody()
+    </div>	<!--/.main-->
+    <!----------------------------------------  Thêm mới------------------------------  -->
+    <!----------------------------------------  Thêm mới------------------------------  -->
+    <!----------------------------------------  Thêm mới------------------------------  -->
+    <div class="modal fade" id="modal-cr">
+        <div class="container" id="crt" style="height: 73vh; top: 50px; ">
+            <form action="/" method="post" id="create-frm">
+                <h4>Thêm mới</h4> <br />
+                <div class="row" id="img-product">
+                    <label class="col-sm-2">Ảnh tiêu đề</label>
+                    <input class="col-sm-10" type="file" id="myfile" name="" />
+
+                </div>
+                <hr />
+                <div class="row" id="img-product">
+                    <label class="col-sm-2">Ảnh chi tiết</label>
+                    <input class="col-sm-8" type="file" id="myfile-details" name="" value="" multiple />
+
+                </div>
+                <hr />
+                <div class="row" id="option">
+                    <div class="col-sm-2">
+                        <label>Danh mục</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <select class="btn-op-ff" name="TenDanhSach">
+                            <option selected>Chọn</option>
+                            <option class="op-ff">Kiến trúc</option>
+                            <option class="op-ff">Nội thất</option>
+                            <option class="op-ff">Xây dựng</option>
+                        </select>
+                        <select class="btn-op-cc"> </select>
+                        <select class="btn-op-tt"> </select>
+                    </div>
+                </div>
+                <hr />
+                <div class="row" id="n-product">
+                    <label class="col-sm-2">Tiêu đề</label>
+                    <input class="col-sm-10" type="text" id="input-title" value="" />
+                </div>
+                <hr />
+                <div class="row" id="n-product">
+                    <label class="col-sm-2">Đường dẫn</label>
+                    <input class="col-sm-10" type="text" id="input-metaTitle" placeholder="duong-dan-san-pham" />
+                </div>
+                <hr />
+                <div class="text-justify" id="btn-cre">
+                    <input id="btn-save" type="button" class="btn btn-primary" value="Thêm" />
+                    <input id="btn-out" type="button" class="btn btn-primary" value="Thoát" data-dismiss="modal" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!----------------------------------------  Sửa------------------------------  -->
+    <!----------------------------------------  Sửa------------------------------  -->
+    <!----------------------------------------  Sửa------------------------------  -->
+
+    <div class="modal fade" id="modal-edit" style="padding: 0;">
+        <div class="container" id="edit" style="height: 86vh; top: 50px;">
+            <form action="/" method="post" id="edit-frm">
+                <h4 style="font-weight: 600; padding: 10px; background-color: #4055fc; margin: 0;">Sửa</h4> <br />
+                <div class="row" id="img-product">
+                    <label class="col-sm-2">Ảnh tiêu đề</label>
+                    <input class="col-sm-6" type="file" id="fileTitle" name="" />
+                    <div class="col-sm-4" id="view-file" style="text-align: end;">
+                        <img id="edit-img-title" class="img-thumbnail" src="" width="110" height="100" alt="Alternate Text" />
+                    </div>
+                </div>
+                <hr />
+                <div class="row" id="img-product">
+                    <label class="col-sm-2">Ảnh chi tiết</label>
+                    <input class="col-sm-8" type="file" id="Allfile-details" name="" value="" multiple />
+                    <input id="img-detail-edit" class="col-sm-2" type="button" data-toggle="modal" data-target="#edit-mmyModal" value="Xem ảnh chi tiết" style="padding: 0; border: none; background-color: #e6e4e4; text-align: right; height: 30px; width: 120px; position: absolute; right: 127px; " />
+                </div>
+                <hr />
+                <div class="row" id="option">
+                    <div class="col-sm-2">
+                        <label>Danh mục</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <select class="edit-btn-op-f" name="TenDanhSach">
+                            <option>Chọn</option>
+                            <option class="op-ff">Kiến trúc</option>
+                            <option class="op-ff">Nội thất</option>
+                            <option class="op-ff">Xây dựng</option>
+                        </select>
+                        <select class="edit-btn-op-c"> </select>
+                        <select class="edit-btn-op-t"> </select>
+                    </div>
+                </div>
+                <hr />
+                <div class="row" id="n-product">
+                    <label class="col-sm-2">Tiêu đề</label>
+                    <input class="col-sm-10" type="text" id="edit-input-title" value="" />
+                </div>
+                <hr />
+                <div class="row" id="n-product">
+                    <label class="col-sm-2">Đường dẫn</label>
+                    <input class="col-sm-10" type="text" id="edit-input-metaTitle" placeholder="duong-dan-san-pham" />
+                </div>
+                <hr />
+                <div class="text-justify" id="btn-fun-edit">
+                    <input id="btn-edit" type="button" class="btn btn-primary" value="Sửa" />
+                    <input id="btn-out-edit" type="button" class="btn btn-primary" value="Thoát" data-dismiss="modal" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="~/Content/AssetAdmin/js/jquery-1.11.1.min.js"></script>
+    <script src="~/Content/AssetAdmin/js/bootstrap.min.js"></script>
+    <script src="~/Content/AssetAdmin/js/chart.min.js"></script>
+    <script src="~/Content/AssetAdmin/js/chart-data.js"></script>
+    <script src="~/Content/AssetAdmin/js/easypiechart.js"></script>
+    <script src="~/Content/AssetAdmin/js/easypiechart-data.js"></script>
+    <script src="~/Content/AssetAdmin/js/bootstrap-datepicker.js"></script>
+    <script src="~/Content/AssetAdmin/js/custom.js"></script>
+    @*<script>
+        window.onload = function () {
+            var chart1 = document.getElementById("line-chart").getContext("2d");
+            window.myLine = new Chart(chart1).Line(lineChartData, {
+                responsive: true,
+                scaleLineColor: "rgba(0,0,0,.2)",
+                scaleGridLineColor: "rgba(0,0,0,.05)",
+                scaleFontColor: "#c5c7cc"
+            });
+        };</script>*@
+    <script>
+                                                        //var slideIndex = 1;
+                                                        //showSlides(slideIndex);
+                                                        //function plusSlides(n) {
+                                                        //    showSlides(slideIndex += n);
+                                                        //}
+                                                        //function currentSlide(n) {
+                                                        //    showSlides(slideIndex = n);
+                                                        //}
+                                                        //function showSlides(n) {
+                                                        //    var i;
+                                                        //    var slides = document.getElementsByClassName("mySlides");
+                                                        //    alert("asd" + slides);
+                                                        //    var dots = document.getElementsByClassName("demo");
+                                                        //    if (n > slides.length) { slideIndex = 1 }
+                                                        //    if (n < 1) { slideIndex = slides.length }
+                                                        //    for (i = 0; i < slides.length; i++) {
+                                                        //        slides[i].style.display = "none";
+                                                        //    }
+                                                        //    for (i = 0; i < dots.length; i++) {
+                                                        //        dots[i].className = dots[i].className.replace(" active", "");
+                                                        //    }
+                                                        //    slides[slideIndex - 1].style.display = "block";
+                                                        //    dots[slideIndex - 1].className += " active";
+                                                        //}
+    </script>
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    <script src="~/Scripts/Paging/paginate.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
