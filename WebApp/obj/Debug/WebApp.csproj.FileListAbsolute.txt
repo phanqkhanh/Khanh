@@ -166,3 +166,7 @@ C:\Users\quock\Desktop\New folder\WebApp\WebApp\bin\DatabaseProvider.dll.config
 C:\Users\quock\Desktop\New folder\WebApp\WebApp\bin\EntityFramework.xml
 C:\Users\quock\Desktop\New folder\WebApp\WebApp\bin\EntityFramework.SqlServer.dll
 C:\Users\quock\Desktop\New folder\WebApp\WebApp\bin\EntityFramework.SqlServer.xml
+C:\Users\quock\Desktop\New folder\WebApp\WebApp\bin\PagedList.dll
+C:\Users\quock\Desktop\New folder\WebApp\WebApp\bin\PagedList.Mvc.dll
+C:\Users\quock\Desktop\New folder\WebApp\WebApp\bin\PagedList.xml
+C:\Users\quock\Desktop\New folder\WebApp\WebApp\bin\PagedList.Mvc.xml

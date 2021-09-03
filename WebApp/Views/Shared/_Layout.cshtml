@@ -20,9 +20,61 @@
             filter: opacity(0.7);
             transition: top 0.3s;
         }
+
         .contact {
             position: fixed;
         }
+    </style>
+    <style>
+        .product {
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .product > img {
+                width: 100%;
+                height: 350px;
+            }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            background: rgb(0, 0, 0);
+            background: rgba(0, 0, 0, 0.5);
+            color: #f1f1f1;
+            width: 92.5%;
+            height: 100%;
+            transition: .7s ease;
+            opacity: 0;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+            .overlay:hover {
+                opacity: 1;
+            }
+
+            .overlay > div > span {
+                font-size: 18px;
+                font-weight: 600;
+            }
+
+            .overlay > div {
+                margin-top: 40%;
+            }
+
+        .paging {
+            text-align: center;
+        }
+
+            .paging > p {
+                margin: 0;
+                font-size: 15px;
+                font-weight: 600;
+            }
     </style>
 </head>
 <body>
@@ -45,205 +97,210 @@
                     <div class="collapse navbar-collapse col-md-8" id="collapsibleNavbar">
                         <ul class="nav navbar-nav " id="collap-ul">
                             <li id="nav-item">
-                                <a class="" id="nav-link-css" href="#">Trang chủ</a>
+                                <a class="" id="nav-link-css" href="/">Trang chủ</a>
                             </li>
-                            <li class="dropdown" id="nav-item">
-                                <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Giới thiệu <span class="caret"></span></a>
+                            <li id="nav-item">
+                                <a id="nav-link-css" href="#">Giới thiệu <i class="fas fa-caret-down"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">link</a></li>
                                     <li><a href="#">link</a></li>
                                     <li><a href="#">link</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown" id="nav-item">
-                                <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Kiến trúc<span class="caret"></span></a>
+                            <li id="nav-item">
+                                <a id="nav-link-css" href="/kien-truc">Kiến trúc <i class="fas fa-caret-down"></i></a>
                                 <ul class="" id="dropdown-css">
                                     <li id="dropdown-li">
                                         <ul id="dropdown-ul">
                                             <li id="dropdown-ul-item">
-                                                <p><u>DỰ ÁN</u></p>
+                                                <a style="color: yellow; font-size: 17px;" href="/kien-truc/du-an"> <u>DỰ ÁN</u> </a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Show room, shop, building, office</a>
+                                                <a href="/kien-truc/du-an/show-room-shop-building-office"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Show room, shop, building, office</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Spa, beauty salon</a>
+                                                <a href="/kien-truc/du-an/spa-beauty-salon"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Spa, beauty salon</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Khách sạn, resort</a>
+                                                <a href="/kien-truc/du-an/khach-san-resort"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Khách sạn, resort</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bar, cafe, nhà hàng, karaoke</a>
+                                                <a href="/kien-truc/du-an/bar-cafe-nha-hang-karaoke"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bar, cafe, nhà hàng, karaoke</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Nhà Phố</a>
+                                                <a href="/kien-truc/du-an/nha-pho"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Nhà Phố</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Căn hộ, penthouse</a>
+                                                <a href="/kien-truc/du-an/can-ho-penthouse"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Căn hộ, penthouse</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Biệt thự</a>
+                                                <a href="/kien-truc/du-an/biet-thu"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Biệt thự</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Concept</a>
+                                                <a href="/kien-truc/du-an/concept"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Concept</a>
                                             </li>
                                         </ul>
                                         <div class="hr"></div>
                                         <ul id="dropdown-ul">
                                             <li id="dropdown-ul-item">
-                                                <p><u>THƯ VIỆN</u></p>
+                                                
+                                                <a style="color: yellow; font-size: 17px;" href="/kien-truc/thu-vien"> <u>THƯ VIỆN</u> </a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Phòng khách</a>
+                                                <a href="/kien-truc/thu-vien/phong-khach"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Phòng khách</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bếp, phòng ăn</a>
+                                                <a href="/kien-truc/thu-vien/bep-phong-an"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bếp, phòng ăn</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Phòng ngủ</a>
+                                                <a href="/kien-truc/thu-vien/phong-ngu"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Phòng ngủ</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Phòng trẻ em</a>
+                                                <a href="/kien-truc/thu-vien/phong-tre-em"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Phòng trẻ em</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Sân thượng</a>
+                                                <a href="/kien-truc/thu-vien/san-thuong"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Sân thượng</a>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="dropdown" id="nav-item">
-                                <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Nội thất<span class="caret"></span></a>
+                            <li id="nav-item">
+                                <a id="nav-link-css" href="/noi-that">Nội thất <i class="fas fa-caret-down"></i></a>
                                 <ul class="" id="dropdown-css">
                                     <li id="dropdown-li">
                                         <ul id="dropdown-ul">
                                             <li id="dropdown-ul-item">
-                                                <p><u>CABINETPRO</u></p>
+                                                <a style="color: yellow; font-size: 17px;" href="/noi-that/cabinetpro"> <u>CABINETPRO</u> </a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Giường</a>
+                                                <a href="/noi-that/cabinetpro/giuong"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Giường</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bàn</a>
+                                                <a href="/noi-that/cabinetpro/ban"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bàn</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ tivi</a>
+                                                <a href="/noi-that/cabinetpro/tu-tivi"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ tivi</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ đầu giường</a>
+                                                <a href="/noi-that/cabinetpro/tu-dau-giuong"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ đầu giường</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ hồ sơ</a>
+                                                <a href="/noi-that/cabinetpro/tu-ho-so"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ hồ sơ</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Kệ sách</a>
-                                            </li>
-                                        </ul>
-                                        <div class="hr"></div>
-                                        <ul id="dropdown-ul">
-                                            <li id="dropdown-ul-item">
-                                                <p><u>ACONCEPT</u></p>
-                                            </li>
-                                            <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Sofa</a>
-                                            </li>
-                                            <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bàn</a>
-                                            </li>
-                                            <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Ghế</a>
-                                            </li>
-                                            <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Giường</a>
-                                            </li>
-                                            <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ</a>
+                                                <a href="/noi-that/cabinetpro/ke-sach"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Kệ sách</a>
                                             </li>
                                         </ul>
                                         <div class="hr"></div>
                                         <ul id="dropdown-ul">
                                             <li id="dropdown-ul-item">
-                                                <p><u>BOCONCEPT</u></p>
+                                                
+                                                <a style="color: yellow; font-size: 17px;" href="/noi-that/aconcept"> <u>ACONCEPT</u> </a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Sofa</a>
+                                                <a href="/noi-that/aconcept/sofa"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Sofa</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bàn</a>
+                                                <a href="/noi-that/aconcept/ban"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bàn</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Giường</a>
+                                                <a href="/noi-that/aconcept/ghe"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Ghế</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ</a>
+                                                <a href="/noi-that/aconcept/giuong"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Giường</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="/noi-that/aconcept/tu"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ</a>
+                                            </li>
+                                        </ul>
+                                        <div class="hr"></div>
+                                        <ul id="dropdown-ul">
+                                            <li id="dropdown-ul-item">
+                                                
+                                                <a style="color: yellow; font-size: 17px;" href="/noi-that/boconcept"> <u>BOCONCEPT</u> </a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="/noi-that/boconcept/sofa"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Sofa</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="/noi-that/boconcept/ban"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Bàn</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="/noi-that/boconcept/giuong"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Giường</a>
+                                            </li>
+                                            <li id="dropdown-ul-item">
+                                                <a href="/noi-that/boconcept/tu"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Tủ</a>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="dropdown" id="nav-item">
-                                <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Xây dựng<span class="caret"></span></a>
+                            <li id="nav-item">
+                                <a id="nav-link-css" href="/xay-dung">Xây dựng<i class="fas fa-caret-down"></i></a>
                                 <ul class="" id="dropdown-css">
                                     <li id="dropdown-li">
                                         <ul id="dropdown-ul">
                                             <li id="dropdown-ul-item">
-                                                <p><u>THẠCH CAO</u></p>
+                                                
+                                                <a style="color: yellow; font-size: 17px;" href="/xay-dung/thach-cao"> <u>THẠCH CAO</u> </a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Ốp trần</a>
+                                                <a href="/xay-dung/thach-cao/op-tran"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Ốp trần</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Vách ngăn</a>
+                                                <a href="/xay-dung/thach-cao/vach-ngan"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Vách ngăn</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Ốp ngoài trời</a>
+                                                <a href="/xay-dung/thach-cao/op-ngoai-troi"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Ốp ngoài trời</a>
                                             </li>
 
                                         </ul>
                                         <div class="hr"></div>
                                         <ul id="dropdown-ul">
                                             <li id="dropdown-ul-item">
-                                                <p><u>SƠN, CHỐNG THẤM</u></p>
+                                                
+                                                <a style="color: yellow; font-size: 17px;" href="/xay-dung/son-chong-tham"> <u>SƠN, CHỐNG THẤM</u> </a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Dulux Easyclean</a>
+                                                <a href="/xay-dung/son-chong-tham/dulux-easyclean"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Dulux Easyclean</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Dulux WeatherShield</a>
+                                                <a href="/xay-dung/son-chong-tham/dulux-weathershield"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Dulux WeatherShield</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Chống thấm tường</a>
+                                                <a href="/xay-dung/son-chong-tham/chong-tham-tuong"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Chống thấm tường</a>
                                             </li>
 
                                         </ul>
                                         <div class="hr"></div>
                                         <ul id="dropdown-ul">
                                             <li id="dropdown-ul-item">
-                                                <p><u>CARAMIC-ĐÁ TỰ NHIÊN</u></p>
+                                                <a style="color: yellow; font-size: 17px;" href="/xay-dung/caramic-da-tu-nhien"> <u>CARAMIC-ĐÁ TỰ NHIÊN</u> </a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Đá tự nhiên</a>
+                                                <a href="/xay-dung/caramic-da-tu-nhien/da-tu-nhien"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Đá tự nhiên</a>
                                             </li>
                                             <li id="dropdown-ul-item">
-                                                <a href="#"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Vietcaramics</a>
+                                                <a href="/xay-dung/caramic-da-tu-nhien/vietcaramics"><i class="fas fa-angle-right"></i>&nbsp;&nbsp;Vietcaramics</a>
                                             </li>
 
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="dropdown" id="nav-item">
-                                <a id="nav-link-css" class="dropdown-toggle" data-toggle="dropdown" href="#">Phong thủy<span class="caret"></span></a>
+                            <li id="nav-item">
+                                <a id="nav-link-css" href="">Phong thủy<i class="fas fa-caret-down"></i></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">link</a></li>
                                     <li><a href="#">link</a></li>
                                     <li><a href="#">link</a></li>
                                 </ul>
                             </li>
-                            <li class="" id="nav-item">
+                            <li id="nav-item">
                                 <a id="nav-link-css" class="navbar-link" href="#">Tin tức</a>
                             </li>
-                            <li class="" id="nav-item">
+                            <li id="nav-item">
                                 <a id="nav-link-css" class="navbar-link" href="#">Liên hệ</a>
                             </li>
                         </ul>
@@ -272,6 +329,71 @@
             </ul>
         </div>
         @RenderBody()
+        <div class="partner">
+            <p>ĐỐI TÁC CHÚNG TÔI</p>
+            <div class="owl-carousel owl-theme" id="my-owl">
+                <div class="item">
+                    <img src="~/olwcarousel/Carousel-img/sliderBT1.jpg" alt="Alternate Text" width="190" height="100" />
+                </div>
+                <div class="item">
+                    <img src="~/olwcarousel/Carousel-img/sliderBT2.jpg" alt="Alternate Text" width="190" height="100" />
+                </div>
+                <div class="item">
+                    <img src="~/olwcarousel/Carousel-img/sliderBT3.jpg" alt="Alternate Text" width="190" height="100" />
+                </div>
+                <div class="item">
+                    <img src="~/olwcarousel/Carousel-img/sliderBT4.jpg" alt="Alternate Text" width="190" height="100" />
+                </div>
+                <div class="item">
+                    <img src="~/olwcarousel/Carousel-img/sliderBT5.jpg" alt="Alternate Text" width="190" height="100" />
+                </div>
+                <div class="item">
+                    <img src="~/olwcarousel/Carousel-img/sliderBT6.jpg" alt="Alternate Text" width="190" height="100" />
+                </div>
+                <div class="item">
+                    <img src="~/olwcarousel/Carousel-img/sliderBT7.png" alt="Alternate Text" width="190" height="100" />
+                </div>
+                <div class="item">
+                    <img src="~/olwcarousel/Carousel-img/sliderBT8.png" alt="Alternate Text" width="190" height="100" />
+                </div>
+                <div class="item">
+                    <img src="~/olwcarousel/Carousel-img/sliderBT9.jpg" alt="Alternate Text" width="190" height="100" />
+                </div>
+                <div class="item">
+                    <img src="~/olwcarousel/Carousel-img/sliderBT10.jpg" alt="Alternate Text" width="190" height="100" />
+                </div>
+                <div class="item">
+                    <img src="~/olwcarousel/Carousel-img/sliderBT11.jpg" alt="Alternate Text" width="190" height="100" />
+                </div>
+                <div class="item">
+                    <img src="~/olwcarousel/Carousel-img/sliderBT12.png" alt="Alternate Text" width="190" height="100" />
+                </div>
+            </div>
+        </div>
+        <script>
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 3
+                    },
+                    800: {
+                        items: 4
+                    },
+                    1000: {
+                        items: 6
+                    }
+                }
+            })
+        </script>
         <footer>
             <div class="container">
                 <div class="row">

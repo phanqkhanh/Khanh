@@ -1,9 +1,11 @@
-﻿@{
+﻿@model List<WebApp.Models.ProductViewModels> 
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="container-fluid" id="slider">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000" data-pause="false" style="margin-top: -50px;">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -14,19 +16,22 @@
         </ol>
         <div class="carousel-inner">
             <div class="item active">
-                <img id="img-slider" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+                <img id="img-slider" src="~/olwcarousel/Carousel-img/sliderTop1.jpg" alt="Alternate Text" />
             </div>
             <div class="item">
-                <img id="img-slider" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+                <img id="img-slider" src="~/olwcarousel/Carousel-img/sliderTop2.jpg" alt="Alternate Text" />
             </div>
             <div class="item">
-                <img id="img-slider" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+                <img id="img-slider" src="~/olwcarousel/Carousel-img/sliderTop3.jpg" alt="Alternate Text" />
             </div>
             <div class="item">
-                <img id="img-slider" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+                <img id="img-slider" src="~/olwcarousel/Carousel-img/sliderTop4.jpg" alt="Alternate Text" />
             </div>
             <div class="item">
-                <img id="img-slider" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+                <img id="img-slider" src="~/olwcarousel/Carousel-img/sliderTop5.jpg" alt="Alternate Text" />
+            </div>
+            <div class="item">
+                <img id="img-slider" src="~/olwcarousel/Carousel-img/sliderTop6.jpg" alt="Alternate Text" />
             </div>
         </div>
     </div>
@@ -50,54 +55,36 @@
 </div>
 <div class="container-fluid" id="product">
     <div class="row" id="row">
-        <div class="col-sm-4 col-md-3" id="product-item">
-            <div class="frame">
-                <a href="#">
-                    <img class="product-img" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
-                    <div>
-                        <span>CHỊ LAN ANH TỈNH KHÁNH HÒA</span>
-                        <p>CĂN HỘ, PENTHOUSE</p>
-                    </div>
-                </a>
+        @{ 
+            int a = 1;
+        }
+        
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-4 col-md-3" id="product-item">
+                <div class="frame">
+                    <a href="">
+                        <img class="product-img" src="@item.Img" alt="Alternate Text" />
+                        <div>
+                            <span class="text-uppercase">@item.Title</span>
+                            <p class="text-uppercase">@item.TypeName</p>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-4 col-md-3" id="product-item">
-            <div class="frame">
-                <a href="#">
-                    <img class="product-img" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
-                    <div>
-                        <span>CHỊ LAN ANH TỈNH KHÁNH HÒA</span>
-                        <p>CĂN HỘ, PENTHOUSE</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3" id="product-item">
-            <div class="frame">
-                <a href="#">
-                    <img class="product-img" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
-                    <div>
-                        <span>CHỊ LAN ANH TỈNH KHÁNH HÒA</span>
-                        <p>CĂN HỘ, PENTHOUSE</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-3" id="product-item">
-            <div class="frame">
-                <a href="#">
-                    <img class="product-img" src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
-                    <div>
-                        <span>CHỊ LAN ANH TỈNH KHÁNH HÒA</span>
-                        <p>CĂN HỘ, PENTHOUSE</p>
-                    </div>
-                </a>
-            </div>
-        </div>
+            a++;
+            if(a > 8)
+            {
+                break;
+            }
+
+        }
+
     </div>
 </div>
+
 <div class="see">
-    <a class="btn" id="btn-see" href="#">Xem tất cả</a>
+    <a class="btn" id="btn-see" href="/kien-truc">Xem tất cả</a>
 </div>
 <div class=" nav-body">
     <ul class="nav nav-tabs" id="btn-gr">
@@ -318,7 +305,7 @@
         </div>
     </div>
     <div class="promotion">
-        <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" />
+        <img src="~/olwcarousel/anhKM.jpg" alt="Alternate Text" />
     </div>
     <div class="detail-text">
         <h6>Thiết kế trọn gói:</h6>
@@ -337,64 +324,6 @@
         <p>Bất kỳ hạng mục nào bên A lược bỏ bớt để tự cung cấp, bên B sẽ tính phí nhân công lắp đặt, bao gồm vật tư (nếu có) và tính lại phần ưu đãi giá thiết kế theo suất đầu tư trên mỗi mét vuông cho bên A.</p>
     </div>
 </div>
-<div class="partner">
-    <p>ĐỐI TÁC CHÚNG TÔI</p>
-    <div class="owl-carousel owl-theme" id="my-owl">
-        <div class="item">
-            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
-        </div>
-        <div class="item">
-            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
-        </div>
-        <div class="item">
-            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
-        </div>
-        <div class="item">
-            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
-        </div>
-        <div class="item">
-            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
-        </div>
-        <div class="item">
-            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
-        </div>
-        <div class="item">
-            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
-        </div>
-        <div class="item">
-            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
-        </div>
-        <div class="item">
-            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
-        </div>
-        <div class="item">
-            <img src="~/img/biet-thu-dep-nhat.jpg" alt="Alternate Text" width="190" height="100" />
-        </div>
-    </div>
-</div>
-<script>
-        $('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: true,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            autoplayHoverPause: true,
-            responsive: {
-                0: {
-                    items: 2
-                },
-                600: {
-                    items: 3
-                },
-                800: {
-                    items: 4
-                },
-                1000: {
-                    items: 6
-                }
-            }
-        })
-</script>
+
 
 

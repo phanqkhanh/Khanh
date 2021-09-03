@@ -53,6 +53,12 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -140,6 +146,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +197,7 @@
     <Content Include="Content\Img\Carousel\sliderTop4.jpg" />
     <Content Include="Content\Img\Carousel\sliderTop5.jpg" />
     <Content Include="Content\Img\Carousel\sliderTop6.jpg" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\responsive.css" />
     <Content Include="Content\StyleLayout.css" />
     <Content Include="favicon.ico" />
@@ -1852,6 +1860,25 @@
     <Content Include="img\mess.png" />
     <Content Include="img\phone.png" />
     <Content Include="img\zalo.png" />
+    <Content Include="olwcarousel\anhKM.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderBT1.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderBT10.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderBT11.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderBT12.png" />
+    <Content Include="olwcarousel\Carousel-img\sliderBT2.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderBT3.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderBT4.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderBT5.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderBT6.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderBT7.png" />
+    <Content Include="olwcarousel\Carousel-img\sliderBT8.png" />
+    <Content Include="olwcarousel\Carousel-img\sliderBT9.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderTop1.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderTop2.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderTop3.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderTop4.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderTop5.jpg" />
+    <Content Include="olwcarousel\Carousel-img\sliderTop6.jpg" />
     <Content Include="olwcarousel\css\ajax-loader.gif" />
     <Content Include="olwcarousel\css\owl.carousel.css" />
     <Content Include="olwcarousel\css\owl.carousel.min.css" />
@@ -1962,16 +1989,17 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Privacy.cshtml" />
     <Content Include="Views\_ViewImports.cshtml" />
+    <Content Include="Views\Home\Architecture.cshtml" />
+    <Content Include="Views\Home\Furniture.cshtml" />
+    <Content Include="Views\Home\Construct.cshtml" />
+    <Content Include="Views\Home\Categories.cshtml" />
+    <Content Include="Views\Home\Types.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

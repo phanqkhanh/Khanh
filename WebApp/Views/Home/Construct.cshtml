@@ -1,0 +1,41 @@
+﻿@model PagedList.PagedList<WebApp.Models.ProductViewModels>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Xây dựng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container" id="conten" style="margin-top: 120px; box-sizing: border-box;">
+    <div>
+        <p class="text-uppercase" style="margin: 0;font-size: 22px; color: #8b8b8b; font-weight: 700; width: 150px; height: 40px; border-bottom: 3px solid #ff7c30;">xậy dựng</p>
+    </div>
+    <hr style="margin-top: 0; border: 1px solid #cbcbcb;" />
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-4 product">
+                <img src="@item.Img" alt="Alternate Text" style="" />
+                <a href="#">
+                    <div class="overlay">
+                        <div>
+                            <span class="text-uppercase">@item.Title</span>
+                            <p>@item.TypeName</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+    <br />
+    @{
+        if (Model.TotalItemCount > 21)
+        {
+            <div class="paging">
+                <p>Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount </p>
+                @Html.PagedListPager(Model, page => Url.Action("Construct", new { page }))
+            </div>
+        }
+    }
+</div>

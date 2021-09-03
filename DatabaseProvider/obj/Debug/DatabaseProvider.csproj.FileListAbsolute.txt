@@ -9,4 +9,3 @@ C:\Users\quock\Desktop\New folder\WebApp\DatabaseProvider\obj\Debug\DatabaseProv
 C:\Users\quock\Desktop\New folder\WebApp\DatabaseProvider\obj\Debug\DatabaseProvider.csproj.CopyComplete
 C:\Users\quock\Desktop\New folder\WebApp\DatabaseProvider\obj\Debug\DatabaseProvider.dll
 C:\Users\quock\Desktop\New folder\WebApp\DatabaseProvider\obj\Debug\DatabaseProvider.pdb
-C:\Users\quock\Desktop\New folder\WebApp\DatabaseProvider\obj\Debug\DatabaseProvider.csproj.AssemblyReference.cache
