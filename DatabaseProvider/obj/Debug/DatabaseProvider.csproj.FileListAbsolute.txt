@@ -9,3 +9,15 @@ C:\Users\quock\Desktop\New folder\WebApp\DatabaseProvider\obj\Debug\DatabaseProv
 C:\Users\quock\Desktop\New folder\WebApp\DatabaseProvider\obj\Debug\DatabaseProvider.csproj.CopyComplete
 C:\Users\quock\Desktop\New folder\WebApp\DatabaseProvider\obj\Debug\DatabaseProvider.dll
 C:\Users\quock\Desktop\New folder\WebApp\DatabaseProvider\obj\Debug\DatabaseProvider.pdb
+C:\Users\quock\Desktop\Khanh\DatabaseProvider\bin\Debug\DatabaseProvider.dll.config
+C:\Users\quock\Desktop\Khanh\DatabaseProvider\bin\Debug\DatabaseProvider.dll
+C:\Users\quock\Desktop\Khanh\DatabaseProvider\bin\Debug\DatabaseProvider.pdb
+C:\Users\quock\Desktop\Khanh\DatabaseProvider\bin\Debug\EntityFramework.dll
+C:\Users\quock\Desktop\Khanh\DatabaseProvider\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\quock\Desktop\Khanh\DatabaseProvider\bin\Debug\EntityFramework.xml
+C:\Users\quock\Desktop\Khanh\DatabaseProvider\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\quock\Desktop\Khanh\DatabaseProvider\obj\Debug\DatabaseProvider.csproj.AssemblyReference.cache
+C:\Users\quock\Desktop\Khanh\DatabaseProvider\obj\Debug\DatabaseProvider.csproj.CoreCompileInputs.cache
+C:\Users\quock\Desktop\Khanh\DatabaseProvider\obj\Debug\DatabaseProvider.csproj.CopyComplete
+C:\Users\quock\Desktop\Khanh\DatabaseProvider\obj\Debug\DatabaseProvider.dll
+C:\Users\quock\Desktop\Khanh\DatabaseProvider\obj\Debug\DatabaseProvider.pdb

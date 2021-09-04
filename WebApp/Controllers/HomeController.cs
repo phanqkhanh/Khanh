@@ -89,5 +89,24 @@ namespace WebApp.Controllers
             int pageNumber = (page ?? 1);
             return View(ls.ToPagedList(pageNumber, pageSize));
         }
+        public ActionResult Product(string product)
+        {
+            List<string> listImg = new List<string>();
+            var sp = myDb.Products.Where(p => p.MetaTitle == product).FirstOrDefault();
+            var productDetail = myDb.ProductDetails.Where(p => p.ProductId == sp.ID).ToList();
+            
+            foreach (var item in productDetail)
+            {
+                listImg.Add(item.Img);
+            }
+            var ls = new List<ProductDetailViewModels>();
+            myDb.Products.Where(p => p.TypeID == sp.TypeID).ToList().ForEach(i =>
+           {
+               ls.Add(new ProductDetailViewModels(i.ID, i.Title, i.MetaTitle, i.Img, i.TypeID));
+           });
+            ViewBag.Id = sp.ID;
+            ViewBag.ImgDetail = listImg;
+            return View(ls);
+        }
     }
 }

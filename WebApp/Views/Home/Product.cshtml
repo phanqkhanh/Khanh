@@ -1,0 +1,98 @@
+﻿@model List<WebApp.Models.ProductDetailViewModels>
+
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="height: 220px;">
+    @foreach (var item in Model)
+    {
+        if (item.ID == ViewBag.Id)
+        {
+            <div style="height: 100%; overflow: hidden; position: relative;">
+                <img src="@item.Img" alt="Alternate Text" style="width: 100%;" />
+                <div style="position: absolute; background-color: black; height: 100%; width: 100%; top: 100px; filter: opacity(0.6);">
+                </div>
+                <div style="position: absolute; top: 130px; width: 100%; height: auto; text-align: center;">
+                    <p class="text-uppercase" style="font-size: 16px; color: #dcdcdc;">@item.TypeName</p>
+                    <span class="text-uppercase" style="color: white; font-size: 25px; font-weight: 600;">@item.Title</span>
+                </div>
+            </div>
+            break;
+        }
+    }
+</div>
+<div class="container">
+    <div style="width: 85%; margin: auto;">
+        <p style="margin-top:40px;margin-bottom:40px; font-size: 25px; font-weight: bold; color: #fcd904;">Thông tin dự án</p>
+    </div>
+    @foreach (var item in ViewBag.ImgDetail)
+    {
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img class="img-thumbnail" src="@item" alt="Alternate Text" style="width: 85%;" />
+        </div>
+    }
+    <div style="width: 85%; margin: auto; text-align: center; margin-top: 40px; font-size: 16px; font-weight: bold;">
+        <span class="text-uppercase">dự án liên quan</span>
+        <hr style="margin-top: 0; width: 144px; border-block-color: inherit;" />
+    </div>
+    <div class="partner2" style="text-align: center; width: 85%; margin: auto;">
+        <div class="owl-carousel owl-theme" id="my-owl2">
+            @foreach (var item in Model)
+            {
+                if (item.ID != ViewBag.Id)
+                {
+                    <div class="item">
+                        <a href="/chi-tiet/@item.MetaTitle">
+                            <img src="@item.Img" alt="Alternate Text" width="230" height="230" />
+                            <div style="position: absolute; top: 70%; color: white; left: 0; right: 0;">
+                                <span style="font-weight: bold; font-size: 14px;" class="text-uppercase">@item.Title</span>
+                                <p style="font-size: 12px;" class="text-uppercase">@item.TypeName</p>
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <style>
+        #my-owl2 .item > a > img {
+            -webkit-filter: grayscale(100%);
+            -moz-filter: grayscale(100%);
+            filter: grayscale(100%);
+            transition: 0.5s;
+        }
+
+            #my-owl2 .item > a > img:hover {
+                -webkit-filter: grayscale(0%);
+                -moz-filter: grayscale(0%);
+                filter: grayscale(0%);
+            }
+    </style>
+    <script>
+        $('#my-owl2').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                800: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        })
+    </script>
+</div>

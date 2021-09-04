@@ -29,6 +29,11 @@ namespace WebApp
                 defaults: new { controller = "Home", action = "Construct", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Product",
+                url: "chi-tiet/{product}",
+                defaults: new { controller = "Home", action = "Product", product = UrlParameter.Optional }
+                );
+            routes.MapRoute(
                 name: "route1",
                 url: "{me-ta}/{categories}",
                 defaults: new {controller = "Home", action ="Categories", categories = UrlParameter.Optional}
@@ -38,11 +43,7 @@ namespace WebApp
                 url: "{me-ta}/{categories}/{type}",
                 defaults: new { controller = "Home", action = "Types", type = UrlParameter.Optional , categories =UrlParameter.Optional}
                 );
-            routes.MapRoute(
-                name: "product",
-                url: "{me-ta}/{categories}/{type}/{product}",
-                defaults: new {controller = "Home", action = "Product"}
-                );
+            
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
